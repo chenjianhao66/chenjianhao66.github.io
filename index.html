@@ -387,8 +387,7 @@
 
 
 <script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getMinutes() + '.jpg)');
+    $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
 </script>
 
 
@@ -520,7 +519,7 @@
         }
 
         coverSlider.carousel({
-            duration: Number('300'),
+            duration: Number('120'),
             fullWidth: true,
             indicators: 'true' === 'true',
             onCycleTo() {
@@ -538,7 +537,7 @@
         let autoCarousel = function() {
             carouselIntervalId = setInterval(function () {
                 coverSlider.carousel('next');
-            }, 10000);
+            }, 6500);
         };
         autoCarousel();
         
