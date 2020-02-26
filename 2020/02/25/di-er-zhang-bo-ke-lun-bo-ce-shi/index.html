@@ -692,6 +692,32 @@
     
 
     
+        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
+<link rel="stylesheet" href="/css/gitment.css">
+
+<div class="gitment-card card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitment-content" class="card-content"></div>
+</div>
+
+<script src="/libs/gitment/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Tue Feb 25 2020 21:44:59 GMT+0800',
+    owner: 'chenjianhao66',
+    repo: 'chenjianhao66.github.io',
+    oauth: {
+        client_id: 'b0f02b63473e5a7dee54',
+        client_secret: '1b9e6d63b56e5330136e34659d1e9c3d3a68b8b1'
+    }
+});
+
+gitment.render('gitment-content');
+</script>
+    
 
     
 
