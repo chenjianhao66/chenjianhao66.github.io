@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="首页轮播文章测试, Zebre - 热情可抵岁月漫长">
-    <meta name="description" content="测试用">
+    <meta name="keywords" content="C++STL Vector容器, Zebre - 热情可抵岁月漫长">
+    <meta name="description" content="STL库中的vector容器和所属函数的简单学习笔记">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>首页轮播文章测试 | Zebre - 热情可抵岁月漫长</title>
+    <title>C++STL Vector容器 | Zebre - 热情可抵岁月漫长</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -304,12 +304,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/背景.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">首页轮播文章测试</h1>
+                    <h1 class="description center-align post-title">C++STL Vector容器</h1>
                 </div>
             </div>
         </div>
@@ -426,23 +426,22 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%B5%8B%E8%AF%95/">
-                                <span class="chip bg-color">测试</span>
+                            <a href="/tags/C/">
+                                <span class="chip bg-color">C++</span>
+                            </a>
+                        
+                            <a href="/tags/vector/">
+                                <span class="chip bg-color">vector</span>
+                            </a>
+                        
+                            <a href="/tags/STL/">
+                                <span class="chip bg-color">STL</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E6%B5%8B%E8%AF%95/" class="post-category">
-                                测试
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -451,7 +450,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-25
+                    2020-02-27
                 </div>
                 
 
@@ -460,14 +459,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    60
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    5 分
                 </div>
                 
 
@@ -483,11 +482,119 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="第一"><a href="#第一" class="headerlink" title="第一"></a>第一</h2><p>内容</p>
-<hr>
-<h2 id="第二"><a href="#第二" class="headerlink" title="第二"></a>第二</h2><p>内容</p>
-<hr>
-<script>
+                <blockquote>
+<p>学习自侯捷老师的 《The C++ Standard Library》中文翻译版</p>
+</blockquote>
+<h1 id="一、容器"><a href="#一、容器" class="headerlink" title="一、容器"></a>一、容器</h1><p>  容器用来管理一组元素，在STL中提供不少类型的容器，总的来说容器分为2大类：<code>序列式容器</code>和<code>关联式容器</code>2种。<br>  <code>序列式容器</code>是一个 <strong>可序</strong> 群集，容器内所有的元素都是由固定位置的，所存放的位置取决于插入时机和地点，和元素值无关。以追加的方式对容器插入多个元素，这些元素的排序次序和插入次序一致。STL中预定义好的序列式容器由 <code>vector</code>、<code>deque</code>、<code>list</code>。</p>
+<p>  关联式容器是个 <strong>已序</strong> 群集，容器内所有的元素位置取决于特定的排序准则，有STL定好的准则，用户也可以根据需求来指定排序准则，与插入的元素值无关，只关注排序准则来进行排序，这一点和序列式不同。STL提供的关联式容器有：<code>set</code>、<code>multiset</code>、<code>map</code>、<code>multimap</code>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/QQ%E5%9B%BE%E7%89%8720200228104801.png" alt=""></p>
+<h1 id="二、vector容器"><a href="#二、vector容器" class="headerlink" title="二、vector容器"></a>二、vector容器</h1><h2 id="vector的构造函数和析构函数"><a href="#vector的构造函数和析构函数" class="headerlink" title="vector的构造函数和析构函数"></a>vector的构造函数和析构函数</h2><p>  下面列出了vector容器所有的构造函数和析构函数</p>
+<pre><code>vector&lt; Elem &gt; c   //构造一个空vector
+vector&lt; Elem &gt; c{1,2,3,4,5};    //构建元素初值为1，2，3，4，5的vector
+vector&lt; Elem &gt; c1(c2)   //根据c2来构造一个c1，所有元素都会被拷贝
+vector&lt; Elem &gt; c(n)     //生成一个大小为n的vector
+vector&lt; Elem &gt; c(n,elem)    //生成一个大小为n，每个元素都是elem的vector
+vector&lt; Elem &gt; c(bengin,end)    //生成一个vector，区间begin和end之间的元素做为元素初值
+c.~vector&lt; Elem &gt;()     //执行析构函数，销毁所有元素
+</code></pre><h2 id="vector的公共函数"><a href="#vector的公共函数" class="headerlink" title="vector的公共函数"></a>vector的公共函数</h2><p>  所有容器都会提供的一些公共函数：</p>
+<pre><code>size();     //返回当前容器的元素数量
+empty();    //判断当前容器是否还有元素，有元素就返回false
+max_size(); //返回容器所能容量的最大元素数量
+</code></pre><blockquote>
+<p>如果元素数量超过容器最大元素数量，vector会乘2倍增长<br>比如：如果容器容量为4，插入元素5个，那当前最大容器容量变成8，以此类推。</p>
+</blockquote>
+<p>vector提供像数组一样的[]方式来元素赋值操作</p>
+<pre><code>c.at(idx)       //返回索引idx所表示的元素
+c[idx]          //返回索引idx的元素
+c.front()       //返回第一个元素
+c.back()        //返回最后一个元素</code></pre><h2 id="vector的插入元素函数、修改元素函数和移除元素的函数"><a href="#vector的插入元素函数、修改元素函数和移除元素的函数" class="headerlink" title="vector的插入元素函数、修改元素函数和移除元素的函数"></a>vector的插入元素函数、修改元素函数和移除元素的函数</h2><pre><code>c.insert(pos,elem)      //在pos位置上插入一个elem副本，pos是一个迭代器
+c.insert(pos,n,elem)    //在pos位置上插入n个elem副本
+c.insert(pos,begin,end) //在pos位置上插入区间[begin，end]内所有的元素副本
+c.push_back(elem)       //在尾部插入一个elem元素
+c.erase(pos)            //移除pos位置上的元素
+c.erase(begin,end)      //移除begin-end区间上的元素
+c.clear()               //移除所有元素，将容器清空
+</code></pre><blockquote>
+<p>注意：vector容器在后端插入和删除元素的性能特别高，但是在中间插入删除的话，后面的元素就会产生移动，+1或者-1。    </p>
+</blockquote>
+<p>  vector没有提供可以直接移除“等于某值”的元素，这一步可以使用 <code>remove()</code> 算法来实现，有2个方法可以实现</p>
+<pre><code>删除的值 = val
+1、
+使用remove()算法，然后根据remove()算法返回的新终点，遍历容器。
+
+vector&lt;int&gt; coll;
+for (int i = 0; i &lt; 5;++i) {
+        coll.push_back(i);
+    }
+cout &lt;&lt; "value:";
+vector&lt;int&gt;::iterator pos;
+
+//remove算法返回一个终点赋值给end迭代器。
+vector&lt;int&gt;::iterator end =    remove(coll.begin(), coll.end(), 2);    
+    cout &lt;&lt; "\nvalue:";
+    //使用新终点结合begin()遍历容器。
+    for (pos = coll.begin();pos != end;++pos) {
+        cout &lt;&lt; *pos &lt;&lt; " ";
+    }
+
+2、erase()算法和remove()算法一起使用
+
+coll.erase(remove(coll.begin(),coll.end(),val),
+coll.endl());
+</code></pre><h2 id="vector函数运用示例"><a href="#vector函数运用示例" class="headerlink" title="vector函数运用示例"></a>vector函数运用示例</h2><pre><code>
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int main(){
+vector&lt;int&gt; c1; //创建一个int类型的vector容器，起名为c1
+    vector&lt;int&gt;::iterator pos; //船舰一个int类型vector容器的迭代器，起名为pos
+
+    //给vector容器内添加元素
+    c1.push_back(2);
+    c1.push_back(4);
+    c1.push_back(3);
+    c1.push_back(6);
+    c1.push_back(9);
+    c1.push_back(1);
+    c1.push_back(5);
+    c1.push_back(7);
+    c1.push_back(8);
+
+    cout &lt;&lt; "size(): " &lt;&lt; c1.size() &lt;&lt; endl;
+    cout &lt;&lt; "max_size(): " &lt;&lt; c1.max_size() &lt;&lt; endl;
+    cout &lt;&lt; "front(): " &lt;&lt; c1.front() &lt;&lt; endl;
+    cout &lt;&lt; "back(): " &lt;&lt; c1.back() &lt;&lt; endl;
+
+    pos = min_element(c1.begin(), c1.end());  // 调用全局函数 min_element()，需要传入一个容器的一个区间，用于找出该区间内最小的一个数值
+    cout &lt;&lt; "c1容器内最小的数值是：" &lt;&lt; *pos &lt;&lt; endl;  // 在迭代器左边加上星号是取该迭代器所指向的值
+    pos = max_element(c1.begin(), c1.end());  //调用全局函数 max_element()，传入容器的一个区间，找出最大值并让迭代器指向该值
+    cout &lt;&lt; "c1容器内最大的数值是：" &lt;&lt; *pos &lt;&lt; endl;
+
+    //使用sort算法来对c1容器内的数值进行排序,默认是从小大的排序
+    sort(c1.begin(), c1.end());
+
+    for (pos = c1.begin(); pos != c1.end(); ++pos) {
+        cout &lt;&lt; *pos &lt;&lt; " ";
+    }
+    return 0;
+}
+
+
+输出：     
+
+size(): 9
+max_size(): 1073741823
+front(): 2
+back(): 8
+c1容器内最小的数值是：1
+c1容器内最大的数值是：9
+1 2 3 4 5 6 7 8 9
+
+
+
+
+</code></pre><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -520,7 +627,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://jianhao66.gitee.io" rel="external nofollow noreferrer">jianhao Chen</a>
+                    <a href="http://jianhao66.gitee.io" rel="external nofollow noreferrer">Jianhao Chen</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -530,7 +637,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://jianhao66.gitee.io/2020/02/25/shou-ye-lun-bo-wen-zhang-ce-shi/">http://jianhao66.gitee.io/2020/02/25/shou-ye-lun-bo-wen-zhang-ce-shi/</a>
+                    <a href="http://jianhao66.gitee.io/2020/02/27/c-stl-vector-rong-qi/">http://jianhao66.gitee.io/2020/02/27/c-stl-vector-rong-qi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -543,7 +650,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="http://jianhao66.gitee.io" target="_blank">jianhao Chen</a>
+                    <a href="http://jianhao66.gitee.io" target="_blank">Jianhao Chen</a>
                     !
                 </span>
             </div>
@@ -568,8 +675,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%B5%8B%E8%AF%95/">
-                                    <span class="chip bg-color">测试</span>
+                                <a href="/tags/C/">
+                                    <span class="chip bg-color">C++</span>
+                                </a>
+                            
+                                <a href="/tags/vector/">
+                                    <span class="chip bg-color">vector</span>
+                                </a>
+                            
+                                <a href="/tags/STL/">
+                                    <span class="chip bg-color">STL</span>
                                 </a>
                             
                         </div>
@@ -998,41 +1113,51 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/02/25/bo-ke-shang-xian/">
+                <a href="/2020/02/27/c-stl-vector-rong-qi/">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/风景1.jpg" class="responsive-img" alt="博客上线">
+                        <img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/背景.jpg" class="responsive-img" alt="C++STL Vector容器">
                         
-                        <span class="card-title">博客上线</span>
+                        <span class="card-title">C++STL Vector容器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            博客已上线，后面会将之前的学习笔记和后面的技术文章陆续上传到博客
+                            STL库中的vector容器和所属函数的简单学习笔记
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-27
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            jianhao Chen
+                            Jianhao Chen
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%9A%8F%E7%AC%94/">
-                        <span class="chip bg-color">随笔</span>
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                    <a href="/tags/vector/">
+                        <span class="chip bg-color">vector</span>
+                    </a>
+                    
+                    <a href="/tags/STL/">
+                        <span class="chip bg-color">STL</span>
                     </a>
                     
                 </div>
@@ -1046,32 +1171,39 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/25/wo-de-di-yi-pian-bo-ke-wen-zhang/">
+                <a href="/2020/02/26/uml-tong-yi-jian-mo-yu-yan-zheng-li/">
                     <div class="card-image">
                         
+                        <img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/风景2.jpg" class="responsive-img" alt="UML统一建模语言整理">
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="我的第一篇博客文章">
-                        
-                        <span class="card-title">我的第一篇博客文章</span>
+                        <span class="card-title">UML统一建模语言整理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            测试用
+                            对UML知识点进行简单的整理
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-26
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            jianhao Chen
+                            Jianhao Chen
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/UML/">
+                        <span class="chip bg-color">UML</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1221,7 +1353,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">5k</span>&nbsp;字
+                class="white-color">6.3k</span>&nbsp;字
             
             
             

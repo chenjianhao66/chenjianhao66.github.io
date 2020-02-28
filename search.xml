@@ -4,6 +4,29 @@
   
     
     <entry>
+      <title>C++STL Vector容器</title>
+      <link href="/2020/02/27/c-stl-vector-rong-qi/"/>
+      <url>/2020/02/27/c-stl-vector-rong-qi/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>学习自侯捷老师的 《The C++ Standard Library》中文翻译版</p></blockquote><h1 id="一、容器"><a href="#一、容器" class="headerlink" title="一、容器"></a>一、容器</h1><p>  容器用来管理一组元素，在STL中提供不少类型的容器，总的来说容器分为2大类：<code>序列式容器</code>和<code>关联式容器</code>2种。<br>  <code>序列式容器</code>是一个 <strong>可序</strong> 群集，容器内所有的元素都是由固定位置的，所存放的位置取决于插入时机和地点，和元素值无关。以追加的方式对容器插入多个元素，这些元素的排序次序和插入次序一致。STL中预定义好的序列式容器由 <code>vector</code>、<code>deque</code>、<code>list</code>。</p><p>  关联式容器是个 <strong>已序</strong> 群集，容器内所有的元素位置取决于特定的排序准则，有STL定好的准则，用户也可以根据需求来指定排序准则，与插入的元素值无关，只关注排序准则来进行排序，这一点和序列式不同。STL提供的关联式容器有：<code>set</code>、<code>multiset</code>、<code>map</code>、<code>multimap</code>。</p><p><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/QQ%E5%9B%BE%E7%89%8720200228104801.png" alt=""></p><h1 id="二、vector容器"><a href="#二、vector容器" class="headerlink" title="二、vector容器"></a>二、vector容器</h1><h2 id="vector的构造函数和析构函数"><a href="#vector的构造函数和析构函数" class="headerlink" title="vector的构造函数和析构函数"></a>vector的构造函数和析构函数</h2><p>  下面列出了vector容器所有的构造函数和析构函数</p><pre><code>vector&lt; Elem &gt; c   //构造一个空vectorvector&lt; Elem &gt; c{1,2,3,4,5};    //构建元素初值为1，2，3，4，5的vectorvector&lt; Elem &gt; c1(c2)   //根据c2来构造一个c1，所有元素都会被拷贝vector&lt; Elem &gt; c(n)     //生成一个大小为n的vectorvector&lt; Elem &gt; c(n,elem)    //生成一个大小为n，每个元素都是elem的vectorvector&lt; Elem &gt; c(bengin,end)    //生成一个vector，区间begin和end之间的元素做为元素初值c.~vector&lt; Elem &gt;()     //执行析构函数，销毁所有元素</code></pre><h2 id="vector的公共函数"><a href="#vector的公共函数" class="headerlink" title="vector的公共函数"></a>vector的公共函数</h2><p>  所有容器都会提供的一些公共函数：</p><pre><code>size();     //返回当前容器的元素数量empty();    //判断当前容器是否还有元素，有元素就返回falsemax_size(); //返回容器所能容量的最大元素数量</code></pre><blockquote><p>如果元素数量超过容器最大元素数量，vector会乘2倍增长<br>比如：如果容器容量为4，插入元素5个，那当前最大容器容量变成8，以此类推。</p></blockquote><p>vector提供像数组一样的[]方式来元素赋值操作</p><pre><code>c.at(idx)       //返回索引idx所表示的元素c[idx]          //返回索引idx的元素c.front()       //返回第一个元素c.back()        //返回最后一个元素</code></pre><h2 id="vector的插入元素函数、修改元素函数和移除元素的函数"><a href="#vector的插入元素函数、修改元素函数和移除元素的函数" class="headerlink" title="vector的插入元素函数、修改元素函数和移除元素的函数"></a>vector的插入元素函数、修改元素函数和移除元素的函数</h2><pre><code>c.insert(pos,elem)      //在pos位置上插入一个elem副本，pos是一个迭代器c.insert(pos,n,elem)    //在pos位置上插入n个elem副本c.insert(pos,begin,end) //在pos位置上插入区间[begin，end]内所有的元素副本c.push_back(elem)       //在尾部插入一个elem元素c.erase(pos)            //移除pos位置上的元素c.erase(begin,end)      //移除begin-end区间上的元素c.clear()               //移除所有元素，将容器清空</code></pre><blockquote><p>注意：vector容器在后端插入和删除元素的性能特别高，但是在中间插入删除的话，后面的元素就会产生移动，+1或者-1。    </p></blockquote><p>  vector没有提供可以直接移除“等于某值”的元素，这一步可以使用 <code>remove()</code> 算法来实现，有2个方法可以实现</p><pre><code>删除的值 = val1、使用remove()算法，然后根据remove()算法返回的新终点，遍历容器。vector&lt;int&gt; coll;for (int i = 0; i &lt; 5;++i) {        coll.push_back(i);    }cout &lt;&lt; "value:";vector&lt;int&gt;::iterator pos;//remove算法返回一个终点赋值给end迭代器。vector&lt;int&gt;::iterator end =    remove(coll.begin(), coll.end(), 2);        cout &lt;&lt; "\nvalue:";    //使用新终点结合begin()遍历容器。    for (pos = coll.begin();pos != end;++pos) {        cout &lt;&lt; *pos &lt;&lt; " ";    }2、erase()算法和remove()算法一起使用coll.erase(remove(coll.begin(),coll.end(),val),coll.endl());</code></pre><h2 id="vector函数运用示例"><a href="#vector函数运用示例" class="headerlink" title="vector函数运用示例"></a>vector函数运用示例</h2><pre><code>#include &lt;iostream&gt;#include &lt;vector&gt;#include &lt;algorithm&gt;using namespace std;int main(){vector&lt;int&gt; c1; //创建一个int类型的vector容器，起名为c1    vector&lt;int&gt;::iterator pos; //船舰一个int类型vector容器的迭代器，起名为pos    //给vector容器内添加元素    c1.push_back(2);    c1.push_back(4);    c1.push_back(3);    c1.push_back(6);    c1.push_back(9);    c1.push_back(1);    c1.push_back(5);    c1.push_back(7);    c1.push_back(8);    cout &lt;&lt; "size(): " &lt;&lt; c1.size() &lt;&lt; endl;    cout &lt;&lt; "max_size(): " &lt;&lt; c1.max_size() &lt;&lt; endl;    cout &lt;&lt; "front(): " &lt;&lt; c1.front() &lt;&lt; endl;    cout &lt;&lt; "back(): " &lt;&lt; c1.back() &lt;&lt; endl;    pos = min_element(c1.begin(), c1.end());  // 调用全局函数 min_element()，需要传入一个容器的一个区间，用于找出该区间内最小的一个数值    cout &lt;&lt; "c1容器内最小的数值是：" &lt;&lt; *pos &lt;&lt; endl;  // 在迭代器左边加上星号是取该迭代器所指向的值    pos = max_element(c1.begin(), c1.end());  //调用全局函数 max_element()，传入容器的一个区间，找出最大值并让迭代器指向该值    cout &lt;&lt; "c1容器内最大的数值是：" &lt;&lt; *pos &lt;&lt; endl;    //使用sort算法来对c1容器内的数值进行排序,默认是从小大的排序    sort(c1.begin(), c1.end());    for (pos = c1.begin(); pos != c1.end(); ++pos) {        cout &lt;&lt; *pos &lt;&lt; " ";    }    return 0;}输出：     size(): 9max_size(): 1073741823front(): 2back(): 8c1容器内最小的数值是：1c1容器内最大的数值是：91 2 3 4 5 6 7 8 9</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> vector </tag>
+            
+            <tag> STL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>UML统一建模语言整理</title>
       <link href="/2020/02/26/uml-tong-yi-jian-mo-yu-yan-zheng-li/"/>
       <url>/2020/02/26/uml-tong-yi-jian-mo-yu-yan-zheng-li/</url>
@@ -34,31 +57,6 @@
         <tags>
             
             <tag> 随笔 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>首页轮播文章测试</title>
-      <link href="/2020/02/25/shou-ye-lun-bo-wen-zhang-ce-shi/"/>
-      <url>/2020/02/25/shou-ye-lun-bo-wen-zhang-ce-shi/</url>
-      
-        <content type="html"><![CDATA[<h2 id="第一"><a href="#第一" class="headerlink" title="第一"></a>第一</h2><p>内容</p><hr><h2 id="第二"><a href="#第二" class="headerlink" title="第二"></a>第二</h2><p>内容</p><hr><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-      
-      
-      <categories>
-          
-          <category> 测试 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 测试 </tag>
             
         </tags>
       
