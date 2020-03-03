@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="C++STL Vector容器, Zebre - 热情可抵岁月漫长">
+    <meta name="keywords" content="C++ STL 各种容器, Zebre - 热情可抵岁月漫长">
     <meta name="description" content="STL库中的vector容器和所属函数的简单学习笔记">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>C++STL Vector容器 | Zebre - 热情可抵岁月漫长</title>
+    <title>C++ STL 各种容器 | Zebre - 热情可抵岁月漫长</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,7 +309,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">C++STL Vector容器</h1>
+                    <h1 class="description center-align post-title">C++ STL 各种容器</h1>
                 </div>
             </div>
         </div>
@@ -430,10 +430,6 @@
                                 <span class="chip bg-color">C++</span>
                             </a>
                         
-                            <a href="/tags/vector/">
-                                <span class="chip bg-color">vector</span>
-                            </a>
-                        
                             <a href="/tags/STL/">
                                 <span class="chip bg-color">STL</span>
                             </a>
@@ -459,7 +455,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-27
+                    2020-03-01
                 </div>
                 
 
@@ -468,14 +464,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    5.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    21 分
                 </div>
                 
 
@@ -603,7 +599,232 @@ c1容器内最大的数值是：9
 
 
 
-</code></pre><script>
+</code></pre><h1 id="三、deque容器"><a href="#三、deque容器" class="headerlink" title="三、deque容器"></a>三、deque容器</h1><p>  deque容器与vector容器都属于序列式容器，提供随机存取元素的功能，且比vector容器多提供了一个头部插入函数，vector容器有中间插入函数（insert（））和尾部插入函数（push_back（））函数，deque容器多了一个 <code>push_fornt()</code> 函数，提供头部插入元素的功能。</p>
+<p>  deque容器与vector容器一样，在中间部分安插元素和移除元素的速度相对较慢，因为所有元素都需要移动来腾出或者填补空间；迭代器属于 <code>random access iterator 随机存取迭代器</code> ,除开上述几点， vector容器与deque容器的接口几乎一致，两者都可尝试。<br><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/20200303204704.png" alt=""></p>
+<h2 id="deque容器的构造函数与析构函数"><a href="#deque容器的构造函数与析构函数" class="headerlink" title="deque容器的构造函数与析构函数"></a>deque容器的构造函数与析构函数</h2><pre><code>deque&lt; Elem &gt; c   //构造一个空deque
+deque&lt; Elem &gt; c{1,2,3,4,5};    //构建元素初值为1，2，3，4，5的deque
+deque&lt; Elem &gt; c1(c2)   //根据c2来构造一个c1，所有元素都会被拷贝
+deque&lt; Elem &gt; c(n)     //生成一个大小为n的deque
+deque&lt; Elem &gt; c(n,elem)    //生成一个大小为n，每个元素都是elem的deque
+deque&lt; Elem &gt; c(bengin,end)    //生成一个vector，区间begin和end之间的元素做为元素初值
+c.~deque&lt; Elem &gt;()     //执行析构函数，销毁所有元素</code></pre><h2 id="deque容器的插入元素函数、删除元素函数"><a href="#deque容器的插入元素函数、删除元素函数" class="headerlink" title="deque容器的插入元素函数、删除元素函数"></a>deque容器的插入元素函数、删除元素函数</h2><pre><code>c1 = c2              //将C2的所有元素赋值给C1
+c.assign(n,elem)    //将n个elem副本赋值给c
+c.assign(begin,end)    //将区间begin-end内的元素赋值给c
+c1.swap(c2)            //将c1和c2的元素呼唤
+swap(c1,c2)            //同上
+c.insert(pos,elem)    //将elem插入到pos位置，原先的元素往后移位置
+c.insert(pos,n,elem)    //将n个elem插入到pos位置，原先的元素往后移n个位置
+c.insert(pos,begin,end)    //将区间begin-end内的元素插入到pos位置内
+c.push_front(elem)    //将elem插入到头部
+c.pop_front()        //删除头部元素
+c.push_back(elem)    //将elem插入到尾部
+c.pop_back()        //删除尾部元素
+c.erase(pos)        //删除pos位置的元素，注意后面元素会进行覆盖，容器总个数并不会变
+c.erase(begin,end)    //删除区间内的元素，返回下一个元素的位置
+c.clear()            //清除所有元素</code></pre><h2 id="deque容器的非变动函数"><a href="#deque容器的非变动函数" class="headerlink" title="deque容器的非变动函数"></a>deque容器的非变动函数</h2><pre><code>c.size();     //返回当前容器的元素数量
+c.empty();    //判断当前容器是否还有元素，有元素就返回false
+c.max_size(); //返回容器所能容量的最大元素数量
+c.at(idx)      //返回索引idx所指的元素
+c[idx]          //与数组操作一样</code></pre><hr>
+<h1 id="四、list容器"><a href="#四、list容器" class="headerlink" title="四、list容器"></a>四、list容器</h1><p>  list是使用双向链表来管理元素，内部结构和vector、deque完全不同：list不支持随机存取，如果要存第n个元素，那就要顺着串联爬过n-1给元素，所以在list中随机遍历元素是一个很缓慢的。但是在list的任何位置安插和删除元素都非常快，始终是常数时间完成，因为不需要移动任何元素，只需要进行一些指针操作而已。list有不少的成员函数来进行移动元素，相对于STL的同名算法，这些函数执行起来更快。<br><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/20200303204734.png" alt=""></p>
+<h2 id="list的构造函数、析构函数"><a href="#list的构造函数、析构函数" class="headerlink" title="list的构造函数、析构函数"></a>list的构造函数、析构函数</h2><pre><code>list Elem &gt; c   //构造一个空list
+list&lt; Elem &gt; c1(c2)   //根据c2来构造一个c1，所有元素都会被拷贝
+list&lt; Elem &gt; c(n)     //生成一个大小为n的list
+list&lt; Elem &gt; c(n,elem)    //生成一个大小为n，每个元素都是elem的list
+list&lt; Elem &gt; c(bengin,end)    //生成一个list，区间begin和end之间的元素做为元素初值
+c.~list&lt; Elem &gt;()     //执行析构函数，销毁所有元素</code></pre><h2 id="list的非变动性操作函数"><a href="#list的非变动性操作函数" class="headerlink" title="list的非变动性操作函数"></a>list的非变动性操作函数</h2><pre><code>c.size();     //返回当前容器的元素数量
+c.empty();    //判断当前容器是否还有元素，有元素就返回false
+c.max_size(); //返回容器所能容量的最大元素数量</code></pre><h2 id="list容器插入元素函数、删除元素操作函数"><a href="#list容器插入元素函数、删除元素操作函数" class="headerlink" title="list容器插入元素函数、删除元素操作函数"></a>list容器插入元素函数、删除元素操作函数</h2><pre><code>c.insert(pos,elem)    //将elem插入到pos位置，原先的元素往后移位置
+c.insert(pos,n,elem)    //将n个elem插入到pos位置，原先的元素往后移n个位置
+c.insert(pos,begin,end)    //将区间begin-end内的元素插入到pos位置内
+c.push_front(elem)    //将elem插入到头部
+c.pop_front()        //删除头部元素
+c.push_back(elem)    //将elem插入到尾部
+c.pop_back()        //删除尾部元素
+c.renive(value)        //删除所有值为value的元素
+c.erase(pos)        //删除pos位置的元素，注意后面元素会进行覆盖，容器总个数并不会变
+c.erase(begin,end)    //删除区间内的元素，返回下一个元素的位置
+c.clear()            //清除所有元素
+
+//splice函数是list容器独有的函数，译为剪切
+c.splice(pos,c2)    //将c2容器内的所有元素 转移 到c容器的pos位置
+c.splice(pos,c2,c2pos)    //将c2容器内c2pos所指的元素转移到c容器pos迭代器所指的位置上
+c.splice(pos,c2,c2begin,c2end)    //将c2容器的begin-end区间元素转移到c容器pos迭代器所指的位置
+
+//list容器的一些辅助函数
+c.unique()            //如果存在若干相邻而数值相等的元素，就移除重复元素，只留下一个，配合sort()函数排序使用
+c.merge(c2)            //假设c1和c2容器都包含已序元素，将c2的所有元素转移到c，而且合并后的list仍未已序状态</code></pre><blockquote>
+<p>如果想要删除某一个指定的值元素，可以先用 find算法来找到那个元素，并赋值给一个迭代器，再用remove函数删除。</p>
+</blockquote>
+<h2 id="list容器函数示例"><a href="#list容器函数示例" class="headerlink" title="list容器函数示例"></a>list容器函数示例</h2><pre><code>void printList(const list&lt;int&gt;&amp; left, const list&lt;int&gt;&amp; right) {
+    cout &lt;&lt; "list1 :";
+    ostream_iterator&lt;int&gt; out(cout, " ");
+    copy(left.begin(),left.end(),out);
+    cout &lt;&lt; endl &lt;&lt; "list2 :";
+    copy(right.begin(), right.end(), out);
+    cout &lt;&lt; endl &lt;&lt; endl;
+}//传入2个list列表输出list容器内的函数
+
+//主函数
+int main(){
+//创建2个list容器
+    list&lt;int&gt; list1, list2;
+
+    //向2个容器内添加元素
+    for (int i = 0; i &lt; 6;++i) {
+        list1.push_back(i);
+        list2.push_front(i);
+    }
+    //输出是  list1：0 1 2 3 4 5
+//              list2: 5 4 3 2 1 0
+
+    //输出元素
+    printList(list1, list2);
+
+
+    //list2函数调用splice函数，使用find函数查找vaule 3 ，将list1容器里所有的元素插入到list2 值3的迭代器前面
+    //splice函数用法，哪个容器调用的就是最终元素的接收者，实参里面的容器是被移动元素的容器。
+    //这里用法是将list1的元素插入到list2 元素值=3的地方的前面
+    //list2.splice(要转移到的位置迭代器，要被转移元素的容器)
+    /*输出是list1 :
+            list2 :5 4 0 1 2 3 4 5 3 2 1 0
+    */
+    list2.splice(find(list2.begin(), list2.end(), 3), list1);
+    printList(list1, list2);
+
+
+    //转移元素
+    //list2.splice(要转移到的位置迭代器，要转移到的容器，要被转移的位置迭代器);
+    /*输出是
+            list1 :
+            list2 : 4 0 1 2 3 4 5 3 2 1 0 5
+    */
+    list2.splice(list2.end(), list2, list2.begin());
+    printList(list1, list2);
+
+
+    //调用sort算法来进行排序，然后进行赋值操作
+    list2.sort();
+    list1 = list2;
+    list2.unique();//这步操作让list2的重复元素都去除掉了
+    printList(list1, list2);
+
+    //将list2的元素转移到list1，而且顺序保证是排序的，前提是list2容器内的元素要排序好
+    list1.merge(list2);
+    list&lt;int&gt;::iterator pos = list1.begin();
+    printList(list1, list2);
+    }</code></pre><hr>
+<h1 id="五、set和multiset容器"><a href="#五、set和multiset容器" class="headerlink" title="五、set和multiset容器"></a>五、set和multiset容器</h1><p>  set和multiset这2个容器属于关联式容器，关联式容器是根据特定的排序准则，自动的将元素排序，这2个容器不同处是在multiset容器允许元素重复而set不允许元素重复。因为关联式容器是根据排序准则进行排序，那么像push_back和push_fronk这类函数就不能用了，因为插入尾部或者头部的话就破坏了关联式容器的准则-已序。<br><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/20200303204758.png" alt=""></p>
+<p>  set容器是采用平衡二叉树的方式来完成，一个根节点，左节点是比根节点小，右节点比根节点大（目前还没学过数据结构，个人浅显理解），根据这一点插入元素时如果提供一个迭代器来给系统指定一个区域，这样插入速度会快很多</p>
+<h2 id="set和multiset的构造函数和析构函数"><a href="#set和multiset的构造函数和析构函数" class="headerlink" title="set和multiset的构造函数和析构函数"></a>set和multiset的构造函数和析构函数</h2><pre><code>set Elem &gt; c   //构造一个空set
+set&lt; Elem &gt; c1(c2)   //根据c2来构造一个c1，所有元素都会被拷贝
+set&lt; Elem &gt; c(n)     //生成一个大小为n的set
+set&lt; Elem &gt; c(n,elem)    //生成一个大小为n，每个元素都是elem的set
+set&lt; Elem &gt; c(bengin,end)    //生成一个set，区间begin和end之间的元素做为元素初值
+c.~set&lt; Elem &gt;()     //执行析构函数，销毁所有元素
+
+//multiset与set的构造函数和析构函数一致
+
+//在创建容器时可以指定排序准则，若不指定默认是以升序准则来对容器内元素来排列
+//若想指定排序准则，比如以降序，则可以写为：
+    set&lt;int, greater&lt;int&gt;&gt; coll;    //产生一个降序排列的容器</code></pre><h2 id="set和multiset的非变动性函数"><a href="#set和multiset的非变动性函数" class="headerlink" title="set和multiset的非变动性函数"></a>set和multiset的非变动性函数</h2><pre><code>c.size();     //返回当前容器的元素数量
+c.empty();    //判断当前容器是否还有元素，有元素就返回false
+c.max_size(); //返回容器所能容量的最大元素数量</code></pre><h2 id="set和multiset的元素插入函数、删除元素函数"><a href="#set和multiset的元素插入函数、删除元素函数" class="headerlink" title="set和multiset的元素插入函数、删除元素函数"></a>set和multiset的元素插入函数、删除元素函数</h2><pre><code>c.insert(elem)            //插入elem元素副本，并返回元素新位置
+c.insert(pos,elem)        //在pos位置插入elem元素副本，返回新位置
+c.insert(begin,end)        //将区间[begin,end]内的元素插入到c
+c.erase(elem)            //删除“与elem”相等的元素，并返回被移除元素的个数
+c.erase(pos)            //删除迭代器pos所指的元素
+c.erase(begin,end)        //删除区间[begin,end]内的所有元素
+c.clear()                //删除容器内所有的元素
+
+
+//在使用insert()函数来插入元素时，如果是set容器，set容器是不允许重复元素出现的，如果这个时候插入一个容器内已经存在的元素，新元素是插入不进去的，我们怎么判断新元素有没有成功插入呢？
+
+// set使用 pair&lt;iterator,bool&gt; insert( const value_type &amp; elem)
+// pair结构中的second成员表示元素类型是bool类型，值是否安插成功，true表示成功，false则失败
+// pair结构中的first成员则返回新元素的位置，或者返回现存的同值的位置。
+// 举例：
+
+pair&lt;set&lt;int, greater&lt;int&gt;&gt;::iterator, bool&gt; status = coll.insert(4);
+    //根据.second元素的值来判断是否插入成功，true则插入成功，false表示插入失败
+    if (status.second) {
+        cout &lt;&lt; endl&lt;&lt;"元素插入成功"&lt;&lt; endl;
+
+    }
+    else {
+        cout &lt;&lt; "元素插入失败" &lt;&lt; endl;
+    }</code></pre><h2 id="特殊的搜寻函数"><a href="#特殊的搜寻函数" class="headerlink" title="特殊的搜寻函数"></a>特殊的搜寻函数</h2><p>  set和multiset在元素快速搜寻方面有优化设计，所以提供了特殊的搜寻函数，如果有搜寻需求，推荐使用同名的STL算法特殊版本：</p>
+<pre><code>count(elem)                //返回“元素值==elem”的元素个数
+find(elem)                //返回“元素值==elem”的第一个元素，如果找不到就返回end()
+lower_bound(elem)        //返回elem的第一个可安插位置
+upper_bound(elem)        //返回elem的最后一个可安插位置
+equal_range(elem)        //返回elem可安插的第一个位置和最后一个位置
+</code></pre><h2 id="set和muliset函数示例"><a href="#set和muliset函数示例" class="headerlink" title="set和muliset函数示例"></a>set和muliset函数示例</h2><pre><code>set&lt;int, greater&lt;int&gt;&gt; coll;    //产生一个降序排列的容器
+    set&lt;int&gt; coll2;                    //默认是升序排列的容器
+    coll.insert(3);
+    coll.insert(2);
+    coll.insert(1);
+    coll2.insert(3);
+    coll2.insert(2);
+    coll2.insert(1);
+    cout &lt;&lt; "coll：";
+    copy(coll.begin(), coll.end(), ostream_iterator&lt;int&gt;(cout, " "));
+    cout &lt;&lt; endl &lt;&lt; "coll2：";
+    copy(coll2.begin(), coll2.end(), ostream_iterator&lt;int&gt;(cout, " "));
+
+    //插入一个元素，并声明一个对数变量的成员函数来判断元素是否插入成功
+    //pair函数有2个元素，一个是对应容器类型的迭代器，一个是bool类型，这是固定的。
+    pair&lt;set&lt;int, greater&lt;int&gt;&gt;::iterator, bool&gt; status = coll.insert(4);
+    //根据.second元素的值来判断是否插入成功，true则插入成功，false表示插入失败
+    if (status.second) {
+        cout &lt;&lt; endl&lt;&lt;"元素插入成功"&lt;&lt; endl;
+
+    }
+    else {
+        cout &lt;&lt; "元素插入失败" &lt;&lt; endl;
+    }
+    cout &lt;&lt; "coll：";
+    copy(coll.begin(), coll.end(), ostream_iterator&lt;int&gt;(cout, " "));</code></pre><h1 id="六、map和multimap容器"><a href="#六、map和multimap容器" class="headerlink" title="六、map和multimap容器"></a>六、map和multimap容器</h1><p>  map和multimap是一种字典结构，这2个容器的元素存储方式有些不同，插入的元素叫做pair的结构，这个结构由 <code>key / value</code> 组成，也就是 键值 / 实值，这2个容器对 <code>key</code> 的查询很快，但对 <code>value</code> 的查询却差强人意。set和multiset可以理解为特殊的map和multimap，只不过它们的 <code>key</code> 也就是 <code>value</code> 本身。map和mulitmap的不同之处也是在于是否能存储重复元素而已。<br><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/20200303205044.png" alt=""></p>
+<h2 id="map和multip的构造函数和析构函数"><a href="#map和multip的构造函数和析构函数" class="headerlink" title="map和multip的构造函数和析构函数"></a>map和multip的构造函数和析构函数</h2><pre><code>map Elem &gt; c   //构造一个空map
+map&lt; Elem &gt; c1(c2)   //根据c2来构造一个c1，所有元素都会被拷贝
+map&lt; Elem &gt; c(n)     //生成一个大小为n的map
+map&lt; Elem &gt; c(n,elem)    //生成一个大小为n，每个元素都是elem的map
+map&lt; Elem &gt; c(bengin,end)    //生成一个map，区间begin和end之间的元素做为元素初值
+c.~map&lt; Elem &gt;()     //执行析构函数，销毁所有元素
+
+
+
+
+// multimap也是如此</code></pre><h2 id="map和multimap的非变动性函数"><a href="#map和multimap的非变动性函数" class="headerlink" title="map和multimap的非变动性函数"></a>map和multimap的非变动性函数</h2><pre><code>c.size();     //返回当前容器的元素数量
+c.empty();    //判断当前容器是否还有元素，有元素就返回false
+c.max_size(); //返回容器所能容量的最大元素数量</code></pre><h2 id="map和multimap的特殊搜寻函数"><a href="#map和multimap的特殊搜寻函数" class="headerlink" title="map和multimap的特殊搜寻函数"></a>map和multimap的特殊搜寻函数</h2><pre><code>count(elem)                //返回“元素值==elem”的元素个数
+find(elem)                //返回“元素值==elem”的第一个元素，如果找不到就返回end()
+lower_bound(elem)        //返回elem的第一个可安插位置
+upper_bound(elem)        //返回elem的最后一个可安插位置
+equal_range(elem)        //返回elem可安插的第一个位置和最后一个位置</code></pre><h2 id="map和multimap的插入元素函数和删除元素函数"><a href="#map和multimap的插入元素函数和删除元素函数" class="headerlink" title="map和multimap的插入元素函数和删除元素函数"></a>map和multimap的插入元素函数和删除元素函数</h2><pre><code>c.insert(elem)            //插入elem元素副本，并返回元素新位置
+c.insert(pos,elem)        //在pos位置插入elem元素副本，返回新位置
+c.insert(begin,end)        //将区间[begin,end]内的元素插入到c
+c.erase(elem)            //删除“与elem”相等的元素，并返回被移除元素的个数
+c.erase(pos)            //删除迭代器pos所指的元素
+c.erase(begin,end)        //删除区间[begin,end]内的所有元素
+c.clear()                //删除容器内所有的元素
+
+// map也可以像数组一样使用[]操作符来进行对元素的赋值
+
+map&lt;int,string&gt;coll;
+coll.insert(makr_pair(1,"小陈"));
+coll[1]="小佐";
+//注意，这种方法一定要按照map的key/value的类型来进行操作，否则会发生一些未知的错误</code></pre><p>map和multimap的插入函数和set的大体一致，但是map插入的是 <code>key / value</code> 的pair时就比较复杂，有2个不同的方法可以将<code>value</code>传入<code>map</code>：</p>
+<pre><code>1、直接运用pair&lt;&gt; :
+map&lt;int,string&gt; coll;
+coll.insert( pair&lt;int,string&gt;(1,"小明") );
+coll.insert( pair&lt;int,string&gt;(2,"小夫") );
+
+2、使用辅助函数 makr_pair() :
+
+map&lt;int,string&gt; coll;
+coll.insert(makr_pair(3,"胖虎") );
+coll.insert(makr_pair(4,"静香") );</code></pre><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -646,7 +867,7 @@ c1容器内最大的数值是：9
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://jianhao66.gitee.io/2020/02/27/c-stl-vector-rong-qi/">http://jianhao66.gitee.io/2020/02/27/c-stl-vector-rong-qi/</a>
+                    <a href="http://jianhao66.gitee.io/2020/03/01/c-stl-ge-chong-rong-qi/">http://jianhao66.gitee.io/2020/03/01/c-stl-ge-chong-rong-qi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -686,10 +907,6 @@ c1容器内最大的数值是：9
                             
                                 <a href="/tags/C/">
                                     <span class="chip bg-color">C++</span>
-                                </a>
-                            
-                                <a href="/tags/vector/">
-                                    <span class="chip bg-color">vector</span>
                                 </a>
                             
                                 <a href="/tags/STL/">
@@ -1127,12 +1344,12 @@ c1容器内最大的数值是：9
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2020/02/27/c-stl-vector-rong-qi/">
+                <a href="/2020/03/01/c-stl-ge-chong-rong-qi/">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/背景.jpg" class="responsive-img" alt="C++STL Vector容器">
+                        <img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/背景.jpg" class="responsive-img" alt="C++ STL 各种容器">
                         
-                        <span class="card-title">C++STL Vector容器</span>
+                        <span class="card-title">C++ STL 各种容器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1143,7 +1360,7 @@ c1容器内最大的数值是：9
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
                             </span>
                         <span class="publish-author">
                             
@@ -1163,10 +1380,6 @@ c1容器内最大的数值是：9
                     
                     <a href="/tags/C/">
                         <span class="chip bg-color">C++</span>
-                    </a>
-                    
-                    <a href="/tags/vector/">
-                        <span class="chip bg-color">vector</span>
                     </a>
                     
                     <a href="/tags/STL/">
@@ -1366,7 +1579,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">6.3k</span>&nbsp;字
+                class="white-color">10.1k</span>&nbsp;字
             
             
             
