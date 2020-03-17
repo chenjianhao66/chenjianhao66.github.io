@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="博客上线, Zebre - 热情可抵岁月漫长">
-    <meta name="description" content="博客已上线，后面会将之前的学习笔记和后面的技术文章陆续上传到博客">
+    <meta name="keywords" content="面向对象设计原则及模板方法模式, Zebre - 热情可抵岁月漫长">
+    <meta name="description" content="面向对象设计原则和模板方法设计模式">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>博客上线 | Zebre - 热情可抵岁月漫长</title>
+    <title>面向对象设计原则及模板方法模式 | Zebre - 热情可抵岁月漫长</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -304,12 +304,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/风景1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/img-91c6a55525b25b0bc9ed2b3dee91024f.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">博客上线</h1>
+                    <h1 class="description center-align post-title">面向对象设计原则及模板方法模式</h1>
                 </div>
             </div>
         </div>
@@ -426,14 +426,27 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E9%9A%8F%E7%AC%94/">
-                                <span class="chip bg-color">随笔</span>
+                            <a href="/tags/C/">
+                                <span class="chip bg-color">C++</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                                <span class="chip bg-color">设计模式</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                设计模式
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -442,7 +455,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-25
+                    2020-03-17
                 </div>
                 
 
@@ -451,14 +464,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    360
+                    2.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    7 分
                 </div>
                 
 
@@ -474,14 +487,135 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>  很早之前就有搭建博客的想法，博客可以帮助自己构建知识体系，因为各种原因都没有成功，因为这次疫情的原因在家鼓捣电脑这个想法才得以实现，实在惭愧。在家的这段时间也开始真正思考自己以后的职业规划，因为实习过一段时间知道目前社会的工作常态都是一些什么样子的，要让自己在职场上更有竞争力那就得不停的学习。</p>
-<blockquote>
-<p>书山有路勤为径，学海无涯苦作舟。</p>
+                <h1 id="面向对象设计原则"><a href="#面向对象设计原则" class="headerlink" title="面向对象设计原则"></a>面向对象设计原则</h1><p>设计模式都遵守面向对象设计原则，如果设计模式没有遵守面向对象设计原则的话，那么这个设计模式是有缺陷的，不完整的。这些设计原则非常重要，贯穿了所有的设计模式，而面向对象设计原则有包括：</p>
+<h2 id="依赖倒置原则"><a href="#依赖倒置原则" class="headerlink" title="依赖倒置原则"></a>依赖倒置原则</h2><ul>
+<li>高层模块（稳定）不应该依赖于低层模块（变化），二者都应该依赖于抽象。抽象不应该依赖于实现细节，而实现细节应该依赖于抽象（稳定）。</li>
+</ul>
+<h2 id="开放封闭原则"><a href="#开放封闭原则" class="headerlink" title="开放封闭原则"></a>开放封闭原则</h2><ul>
+<li>对扩展开发，对更改封闭。类模块应该是可扩展的，但是不可修改。<blockquote>
+<p>在类内增加扩展功能来应对需求的变化。</p>
 </blockquote>
-<p>  在翻看一些职场人士的经验贴和视频，也有了一些系统学习的框架和思路，定制了一些学习计划目前也完成一段时间了，好脑子不如烂笔头，后续会陆续将一些学习笔记上传到博客，以便于跟踪定位自己的学习情况。当然也不排除发布其他的内容，像资源分享、心情笔记这一些内容，博客内容如若有错误的话请指出，我会及时修改的！谢谢支持！</p>
-<img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/书籍.jpg" width="80%/">
+</li>
+</ul>
+<h2 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h2><ul>
+<li>一个类应该仅有一个引起它变化的原因。</li>
+<li>变化的方向隐含着类的责任。</li>
+</ul>
+<h2 id="里氏替换原则"><a href="#里氏替换原则" class="headerlink" title="里氏替换原则"></a>里氏替换原则</h2><ul>
+<li>子类必须能够替换它们的基类。</li>
+<li>继承表达类型抽象。</li>
+</ul>
+<h2 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h2><ul>
+<li>不应该强迫客户程序依赖它们不用的方法。</li>
+<li>接口应该小而完备。</li>
+</ul>
+<h2 id="优先使用对象组合，而不是类继承"><a href="#优先使用对象组合，而不是类继承" class="headerlink" title="优先使用对象组合，而不是类继承"></a>优先使用对象组合，而不是类继承</h2><ul>
+<li>类继承通常为“白箱复用”，对象组合通常为“黑箱复用”。</li>
+<li>继承在某种程度上破坏了封装性，子类父类耦合度高。</li>
+<li>而对象组合则只要被组合的对象具有良好定义的接口，耦合度低。</li>
+</ul>
+<h2 id="针对接口编程，而不是针对实现编程"><a href="#针对接口编程，而不是针对实现编程" class="headerlink" title="针对接口编程，而不是针对实现编程"></a>针对接口编程，而不是针对实现编程</h2><ul>
+<li>不将变量类型声明为某个特定的具体类，而是声明为某个接口。</li>
+<li>客户程序无需获知对象的具体类型，只需要知道对象所具有的接口。</li>
+<li>减少系统中各部分的依赖关系，从而实现“高内聚，松耦合”的类型设计方案。</li>
+</ul>
+<h2 id="封装变化点"><a href="#封装变化点" class="headerlink" title="封装变化点"></a>封装变化点</h2><ul>
+<li>使用封装来创建对象之间的分解层，让设计者可以在分解层的一侧进行修改，而不会对另一侧产生不良的影响，从而实现层次间的松耦合</li>
+</ul>
+<blockquote>
+<p>需要对代码里面的类和对象之间的关系有一个重新的认识，知道哪些代码是稳定的，哪些是变化的，</p>
+</blockquote>
+<h1 id="设计模式模式分类"><a href="#设计模式模式分类" class="headerlink" title="设计模式模式分类"></a>设计模式模式分类</h1><p>设计模式的要点是在“寻找变化点，然后在变化点处应用设计模式，从而更好地来应对需求的变化”。“什么时候、什么地点应用设计模式” 比 “理解设计模式结构本身”更为重要，设计模式的应用不宜先入为主一上来就使用设计模式，这样是对设计模式的最大误用，避免过度使用设计模式，没有一步到位的设计模式。而是要在变化的地方使用设计模式，而难点是怎么区分整个系统中哪一些是稳定的部分，哪一些是变化的地方。</p>
+<p>从目的来看：</p>
+<ul>
+<li>创建型模式：讲对象的部分创建工作延迟到子类或者其他对象，从而应对需求变化为对象创建时具体类型实现引来的冲击。</li>
+<li>结构性模式：通过类继承或者对象组合获得更灵活的结构，从而应对需求变化为对象的结构带来的冲击。</li>
+<li>行为型模式：通过类继承或者对象组合划分类与对象间的职责，从而应对需求变化为多个交互的对象带来的冲击。</li>
+</ul>
+<p>从范围来看:</p>
+<ul>
+<li>类模式处理类与子类的静态关系。</li>
+<li>对象模式处理对象间的动态关系。</li>
+</ul>
+<hr>
+<h2 id="模板方法-Template-Method"><a href="#模板方法-Template-Method" class="headerlink" title="模板方法 Template Method"></a>模板方法 Template Method</h2><p>template method是一种非常基础的设计模式，在面向对象系统中有者大量的应用。它用最简洁的机制（虚函数的多态性），为很多应用程序框架提供了灵活的扩展点，是代码复用方面的基本实现结构。</p>
+<h3 id="模式定义"><a href="#模式定义" class="headerlink" title="模式定义"></a>模式定义</h3><p>定义一个操作中的算法的骨架（稳定），而将一些步骤（变化）<code>延迟到子类</code>中。template Method 使得子类可以不改变一个算法（复用）的结构即可重定义（override 重写）该算法的某些特定步骤。</p>
+<h3 id="在什么时候会用到-Template-Method-模式"><a href="#在什么时候会用到-Template-Method-模式" class="headerlink" title="在什么时候会用到 Template Method 模式"></a>在什么时候会用到 Template Method 模式</h3><p>在软件构建过程中，对于某一项任务，它常常有<code>稳定</code>的整体操作结构，但完成整个任务的各个子步骤却有很多<code>改变的需求</code>或者在编码中还没有确定如何实现，而<code>无法和任务的整体结构同时实现</code>，必定会出现一个早一个晚的问题。<br>那么如何在确定稳定操作结构的前提下，来灵活应对各个子步骤的变化或者晚期实现需求呢？这时候就可以使用 tempatle method模板方法这个设计模式了。下面就要一个示例来演示一下：</p>
+<pre class=" language-c++"><code class="language-c++">/*
+假设现在有2个团队，一个是框架开发人员，一个是应用程序APP开发人员；
+框架开发团队定义了一个框架，框架中有一个算法 run()并且定义了5个子步骤，子步骤分别为step1、step2、step3、step4、step5，其中setp1、step3、step5都已经由框架开发团队实现，step2、step4由APP团队实现。
+如果没有使用 Template Method设计模式：
+*/
+// 框架开发人员写的代码
+class Library{
+public:
+    void setp1(){   /....  }  //表示已经实现了函数体
+    void setp3(){   /....  }
+    void setp5(){   /....  }
+};
 
-<p>贴一些在家期间自己所看的书籍</p>
+//APP开发人员
+class Application{
+public:
+    void setp2(){   /.... }
+    void setp4(){   /.... }
+
+}
+
+int main(){
+    Library lib();
+    Application app();
+    //执行算法
+    lib.setp1();
+    app.setp2();
+    lib.setp3();
+    app.setp4();
+    lib.setp5();
+    return 0;
+}</code></pre>
+<p>​     在上面的代码上可以看出，2个团队分别负责算法中的一部分子步骤，而main方法里面的执行步骤就是就是我们说的这个算法的稳定操作结构（setp1 ~ setp5），但是分工给2个团队必定有一个团队出于某种原因是晚些时候写完的，在晚些写完的团队还要兼顾写main函数里面的操作结构。现在来看使用了 TemplateMethod模板方法设计模式的代码会是什么样：</p>
+<pre class=" language-c++"><code class="language-c++">class Library{
+public:
+    void run(){
+        setp1();
+        setp2();
+        setp3();
+        setp4();
+        setp5();
+    }
+
+    virtual ~Library(){ }
+protected:
+    void setp1(){    //...}
+    void setp3(){    //...}
+    void setp5(){    //...}
+
+    virtual void setp2() = 0;  //需要子类实现的纯虚方法
+    virtual void setp4() = 0;
+};
+
+//app开发类
+class Application: public Library{
+protected:
+    virtual void setp2(){   //...} //子类重写实现
+    virtual void setp4(){   //...} //子类重写实现
+};
+
+
+  //主函数
+int main(){
+    Library* pLib = new Applicaton();    //基类指针指向子类对象，调用虚函数
+    pLib.run();        
+    //run函数不是虚函数，是public声明的，所以子类可以调用
+    //而run函数里面调用的不都是基类的，有子类的实现的函数，这时候调用的就是虚函数
+
+    delete pLib;
+    return 0;
+}</code></pre>
+<p>在代码中可以看出，原本在第一个例子中要在main方法中实现的算法逻辑被实现到了框架类中的run算法中，在<code>Library</code>类中声明了<code>run</code>算法所需要的5个子步骤方法，自己能实现的全部写好，而不能实现的声明成纯虚函数，等待子类方法继承并实现它，<code>Application</code>子类继承自<code>Library</code>基类，对自己要实现的 setp2和setp4进行重写实现，而后在<code>main</code>函数里面，声明基类指针并且这个指针指向的是子类对象，这样配合配合虚函数来实现多态，指针再进行调用基类<code>public声明 run()</code>方法，在<code>run</code>方法中实现了setp1~setp5的子步骤，其中setp2和setp4会调用自己的虚函数来执行，这样就完成了多态的实现。</p>
+<h3 id="要点总结"><a href="#要点总结" class="headerlink" title="要点总结"></a>要点总结</h3><p>TemplateMethod牧师是一种 非常基础性的设计模式，在抽象系统中有着大量的应用。用最简便的模式（虚函数的多态应用）为很多应用程序框架提供了灵活的扩展点，实现代码复用用方面来实现结构。</p>
+<p>除了可以灵活应对子步骤的变化外，“不要调用我，让我来调用你”的反向控制结构是TemplateMethod的典型应用。</p>
+<p>在具体实现方面，被Template Method调用的虚方法可以具有实现，也可以没有任何实现（抽象方法，纯虚函数），但一般推荐将它们设置为protected方法，可以被子类继承也不暴露接口。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -525,7 +659,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://jianhao66.gitee.io/2020/02/25/bo-ke-shang-xian/">http://jianhao66.gitee.io/2020/02/25/bo-ke-shang-xian/</a>
+                    <a href="http://jianhao66.gitee.io/2020/03/17/mian-xiang-dui-xiang-she-ji-yuan-ze/">http://jianhao66.gitee.io/2020/03/17/mian-xiang-dui-xiang-she-ji-yuan-ze/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -563,8 +697,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E9%9A%8F%E7%AC%94/">
-                                    <span class="chip bg-color">随笔</span>
+                                <a href="/tags/C/">
+                                    <span class="chip bg-color">C++</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                                    <span class="chip bg-color">设计模式</span>
                                 </a>
                             
                         </div>
@@ -993,41 +1131,51 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/02/26/uml-tong-yi-jian-mo-yu-yan-zheng-li/">
+                <a href="/2020/03/17/mian-xiang-dui-xiang-she-ji-yuan-ze/">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/风景2.jpg" class="responsive-img" alt="UML统一建模语言整理">
+                        <img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/img-91c6a55525b25b0bc9ed2b3dee91024f.jpg" class="responsive-img" alt="面向对象设计原则及模板方法模式">
                         
-                        <span class="card-title">UML统一建模语言整理</span>
+                        <span class="card-title">面向对象设计原则及模板方法模式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            对UML知识点进行简单的整理
+                            面向对象设计原则和模板方法设计模式
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-17
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            陈建浩
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                    设计模式
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/UML/">
-                        <span class="chip bg-color">UML</span>
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">设计模式</span>
                     </a>
                     
                 </div>
@@ -1041,24 +1189,23 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/25/wo-de-di-yi-pian-bo-ke-wen-zhang/">
+                <a href="/2020/03/07/shu-zu-nei-yuan-su-de-bian-dong-xing-cao-zuo-yuan-li-xiang-jie/">
                     <div class="card-image">
                         
+                        <img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/老虎.jpg" class="responsive-img" alt="顺序存储-数组的变动性操作原理">
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="我的第一篇博客文章">
-                        
-                        <span class="card-title">我的第一篇博客文章</span>
+                        <span class="card-title">顺序存储-数组的变动性操作原理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            测试用
+                            顺序存储结构-数组的一些基本变动性操作原理
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-07
                             </span>
                         <span class="publish-author">
                             
@@ -1067,6 +1214,14 @@
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
                 </div>
                 
             </div>
