@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="顺序存储-数组的变动性操作原理, Zebre - 热情可抵岁月漫长">
-    <meta name="description" content="顺序存储结构-数组的一些基本变动性操作原理">
+    <meta name="keywords" content="数据结构-栈和队列, Zebre - 热情可抵岁月漫长">
+    <meta name="description" content="栈和队列的基本概念以及代码实现">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>顺序存储-数组的变动性操作原理 | Zebre - 热情可抵岁月漫长</title>
+    <title>数据结构-栈和队列 | Zebre - 热情可抵岁月漫长</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -304,12 +304,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/老虎.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/img-01fd4eebaf4ca4830542ff7982b4161b.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">顺序存储-数组的变动性操作原理</h1>
+                    <h1 class="description center-align post-title">数据结构-栈和队列</h1>
                 </div>
             </div>
         </div>
@@ -426,14 +426,23 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">算法</span>
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                <span class="chip bg-color">数据结构</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                数据结构
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -442,7 +451,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-07
+                    2020-04-04
                 </div>
                 
 
@@ -451,14 +460,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    3.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    15 分
                 </div>
                 
 
@@ -474,68 +483,385 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="顺序存储方式内-数组的变动性操作"><a href="#顺序存储方式内-数组的变动性操作" class="headerlink" title="顺序存储方式内-数组的变动性操作"></a>顺序存储方式内-数组的变动性操作</h1><p>  所有变动性的操作分为4大方面：增（ADD）、删（Delete）、改（Update）、查（query）。下面对这4方面的操作进行一些分析，帮助自己理解原理，回头看时更容易想起。</p>
-<h2 id="一、增加元素（ADD）"><a href="#一、增加元素（ADD）" class="headerlink" title="一、增加元素（ADD）"></a>一、增加元素（ADD）</h2><p>  增加元素可以也就是插入元素，插入的位置也可以概括为3类：从头部插入、从中间位置插入、从尾部插入。这3部分除了从尾部插入，其余2部分插入元素势必会引起其他元素的移动，2者差别就是被移动元素的多少而已。头部插入就是数组全部元素往后挪一个位置，在数组任意一个位置 <code>i</code> 插入元素，那么 <code>i</code> 位置往后的元素都得往后挪位置，<code>i</code> 之前的元素不会受影响。</p>
-<p>初始化一个数组，对数组内元素分别进行赋值：</p>
-<pre><code>int array[10] = {1,2,3,4,5,6,7,8};</code></pre><p>现在在数组内<code>i</code> 位置插入一个元素10，<code>i</code>位置之后的元素往后挪，假设要在第三个位置插入一个元素10，那么第三个位置的元素就要往后挪位置了，但是挪动的次序并不是第三个位置的元素挪，而是最后一个元素开始挪，效果如图:</p>
-<p><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/%E6%95%B0%E7%BB%84%E5%86%85%E5%85%83%E7%B4%A0%E5%90%91%E5%90%8E%E6%8C%AA%E5%8A%A8%E4%BD%8D%E7%BD%AE2-gif%E5%8A%A8%E7%94%BB.gif" alt=""></p>
-<p>  在上图中可以看出，假设我们在数组第3个位置插入元素10，数组内下标为7的元素被挪到下标8，下标6元素被挪动下标7，以此类推直到下标2位置的元素被挪到下标3，下标2被空出来，元素10被插入进来。<code>设被挪动元素的位置为 z ，那么他们的挪动规律总是为： z + 1 = z</code> , <code>z</code> 位置的元素被赋值到 <code>z + 1</code> 的位置,也就是往后挪1步的位置。</p>
-<p>  处理语句已经构想出来了，那么循环语句该怎么决定呢？在数组内位置 <code>i</code> 插入元素，数组内就要向后挪动元素来空出一个位置，而向后挪动元素的动作是从最后一个元素开始的，这样才会保证数组内的元素保持原样。如果是 <code>i+1</code> 个元素开始往后挪的话，那么元素就会被覆盖而且会一直复制，到最后 <code>i</code> 位置后面的元素全是 <code>i+1</code> 元素的副本。</p>
-<p>控制for循环的控制语句有2种类型，一个是递增，从小到大；另一种则是递减，从大到小：</p>
-<pre><code>    for(int i = 0 ; i&lt;=10; i++)  //0-10 循环10次
-    for(int i = 10 ; i &gt;= 0 ; i--)  //10-0 循环10次</code></pre><p>  for循环次数就是被挪动元素的个数，也就是 <code>i</code> 位置元素到最后一个元素的距离往后挪元素都是从最后一个元素开始挪的，然后递减，直到 i 位置为止；for循环无论是采用递增或者是递减的方式，其中有一头必定是插入元素位置 <code>i</code> ，另一头就是该数组最后一个元素的下标。</p>
-<p>  现在我写了一个函数专门来获取数组的长度，代码如下：</p>
-<pre><code>int ArrayLength(int a[]) {
-    int length=0;
-    for (int i = 0; ; ++i) {
-        if (a[i] != 0) length++;
+                <h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p>  栈和队列是线性表的特殊情况，是限制存取位置的线性表。线性表、栈和队列的逻辑结构都是线性的，有唯一的前驱后继，且是一对一的关系，但是只有线性表是可以在任意位置插入和删除元素的线行结构。而栈只能在栈顶位置进行插入和删除元素，队列只能在队头删除元素，在队尾插入元素。所以栈和队列被称特殊的线性表。</p>
+<p>栈是一个重要的数据结构，应用十分广泛。栈是只允许在表的末端进行插入和删除，也称为<code>栈顶</code>；在另一端则称为<code>栈底</code>。在栈中，如果元素按照 A、B、C、D有序顺序入栈的话，那么出栈的顺序只能是D、C、B、A，秉承着<code>先进后出，后进先出</code>的原则。下面2张图表明了栈的入栈、出栈的过程：<br><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/20200328094006.png" alt="入栈"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/20200328094023.png" alt="出栈"></p>
+<h2 id="栈的基本操作"><a href="#栈的基本操作" class="headerlink" title="栈的基本操作"></a>栈的基本操作</h2><p>那么，在一个栈中应该有的基本操作：</p>
+<ul>
+<li>初始化：建立一个空栈</li>
+<li>取栈顶元素：当栈不为空时，则取栈顶的元素返回成功状态；否则返回不成功</li>
+<li>入栈：当栈不满时，将栈顶插入一个新元素，返回成功信息；否则返回不成功</li>
+<li>出栈：当栈不为空时，删除栈顶元素，返回成功信息；否则返回不成功</li>
+<li>判断栈是否为空：如果栈为空返回TRUE；否则返回FALSE</li>
+<li>遍历整个栈：遍历整个栈的元素</li>
+</ul>
+<h2 id="栈的顺序存储实现"><a href="#栈的顺序存储实现" class="headerlink" title="栈的顺序存储实现"></a>栈的顺序存储实现</h2><pre><code>//枚举类型，用来定义返回信息
+enum Status{SUCCESS, FAIL, RANGE_ERROR, OVER_FLOW, EMPTY};</code></pre><h3 id="顺序栈类"><a href="#顺序栈类" class="headerlink" title="顺序栈类"></a>顺序栈类</h3><p>类体结构，栈的类应该包含一个存放数据的数组、该数组的最大存储容量和一个指向栈顶的top指针</p>
+<pre><code>template&lt;class T&gt;
+class SeqStack{
+private:
+    int maxLength;
+    int top;
+    T *data;
+
+public:
+    SeqStack(int size);    //构造函数
+    ~SeqStack();        //析构函数
+    void display()const;//遍历栈
+    Status getTop(T&amp; elem)const;//获取栈顶元素
+    Status Push(T elem);        //入栈
+    Status Pop();                //出栈
+};</code></pre><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><pre><code>template&lt;class T&gt;
+SeqStack&lt;T&gt;::SeqStack(int size){
+    top = -1;
+    //因为是空栈，所以栈顶指针指向-1，如有元素入栈，top则++
+    maxLength = size;
+    *data = new T [size];
+}</code></pre><h3 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a>析构函数</h3><pre><code>template&lt;class T&gt;
+SeqStack&lt;T&gt;::~SeqStack(){
+    delete []data;
+}</code></pre><h3 id="遍历栈"><a href="#遍历栈" class="headerlink" title="遍历栈"></a>遍历栈</h3><pre><code>template&lt;class T&gt;
+SeqStack&lt;T&gt;::display()const{
+    //数组的尾部相等于栈顶，所以输出元素时先输出栈顶元素
+    for(int i = top ; 0 &lt;= i ; i--)
+        cout &lt;&lt; data[i] &lt;&lt; " " ;
+}</code></pre><h3 id="获取栈顶元素"><a href="#获取栈顶元素" class="headerlink" title="获取栈顶元素"></a>获取栈顶元素</h3><pre><code>template&lt;class T&gt;
+Status SeqStack&lt;T&gt;::getTop(T &amp;elem)const{
+    //判断栈是否为空
+    //top是否等于-1，==-1时则代表栈空
+    if(top!=-1){
+        elem = data[top];
+        return SUCCESS;    
+    }
+    eles
+        return EMPTY;
+}</code></pre><h3 id="入栈"><a href="#入栈" class="headerlink" title="入栈"></a>入栈</h3><pre><code>template&lt;class T&gt;
+Status SeqStack&lt;T&gt;::Push(T elem){
+    //判断栈是否已满
+    //条件是top指针是否等于maxLength-1
+    if(top==maxLength-1)
+        return RANGE_ERROR;
+    else{
+        data[++top]=elem;
+        return SUCCESS;
+    }
+}</code></pre><h3 id="出栈"><a href="#出栈" class="headerlink" title="出栈"></a>出栈</h3><pre><code>template&lt;class T&gt;
+Status SeqStack::Pop(){
+    //判断栈是否是空的
+    if(top==-1)
+        return EMPTY;
+    else{
+        top--;
+        return SUCCESS;
+    }
+
+}</code></pre><h2 id="栈的链式存储实现"><a href="#栈的链式存储实现" class="headerlink" title="栈的链式存储实现"></a>栈的链式存储实现</h2><h3 id="链表结点类"><a href="#链表结点类" class="headerlink" title="链表结点类"></a>链表结点类</h3><p>通过链式存储需要通过结点实现，下面是结点类:</p>
+<pre><code>template&lt;class T&gt;
+struct Node{
+    Node&lt;T&gt; *next;
+    T data;
+    Node(){ next = NULL };
+    Node(T data,Node&lt;T&gt;* point){
+        this-&gt;data=data;
+        this-&gt;next=point;
+    }
+};</code></pre><h3 id="链栈类"><a href="#链栈类" class="headerlink" title="链栈类"></a>链栈类</h3><pre><code>template&lt;class T&gt;
+class LinkStack{
+private:
+    Node&lt;T&gt;* top;
+
+public:
+    LinkStack();    //构造函数
+    ~LinkStack();    //析构函数
+    void clear();    //清空链表
+    int getLength()const;    //获取链表长度
+    void display()const;    //遍历链表
+    Status getTop(T&amp; elem)const;    //获取栈顶元素
+    Status Push(T elem);    //入栈
+    Status Pop();            //出栈
+};</code></pre><h3 id="构造函数-1"><a href="#构造函数-1" class="headerlink" title="构造函数"></a>构造函数</h3><pre><code>template&lt;class T&gt;
+LinkStack&lt;T&gt;::LinkStack(){
+    top=NULL;
+}</code></pre><h3 id="析构函数-1"><a href="#析构函数-1" class="headerlink" title="析构函数"></a>析构函数</h3><pre><code>template&lt;class T&gt;
+LinkStack&lt;T&gt;::~LinkStack(){
+    clear();
+}</code></pre><h3 id="清空链表"><a href="#清空链表" class="headerlink" title="清空链表"></a>清空链表</h3><pre><code>template&lt;class T&gt;
+void LinkStack&lt;T&gt;:: clear(){
+    //创建一个新节点，利用这新节点删除结点
+    Node&lt;T&gt;* p = top;
+    while(top!=NULL){
+        p=top;
+        top=tpo-next;
+        delete p;
+    }
+}</code></pre><h3 id="遍历链表"><a href="#遍历链表" class="headerlink" title="遍历链表"></a>遍历链表</h3><pre><code>template&lt;class T&gt;
+void LinkStack&lt;T&gt;::display()const{
+    while(top!=NULL){
+        cout &lt;&lt; top-&gt;data &lt;&lt; " ";
+        top=top-&gt;next;
+    }
+}</code></pre><h3 id="获取链表长度"><a href="#获取链表长度" class="headerlink" title="获取链表长度"></a>获取链表长度</h3><pre><code>template&lt;class T&gt;
+int LinkStack&lt;T&gt;::getLength()const{
+    //判断栈是否为空
+    if(top==NULL)
+        return -1;
+    else{
+        int count=1;
+        while(top!=NULL){
+            count++;
+            top=top-&gt;next;
+        }
+    }
+    return count;
+}</code></pre><h3 id="取栈顶元素"><a href="#取栈顶元素" class="headerlink" title="取栈顶元素"></a>取栈顶元素</h3><pre><code>template&lt;class T&gt;
+Status LinkStack&lt;T&gt;::getTop(T&amp; elem)const{
+    //判断栈是否为空
+    if(top==NULL)
+        return EMPTY;
+    else
+        elem=top-&gt;data;
+    return SUCCESS;
+}</code></pre><h3 id="入栈-1"><a href="#入栈-1" class="headerlink" title="入栈"></a>入栈</h3><pre><code>template&lt;class T&gt;
+Status LinkStack&lt;T&gt;::Push(T elem){
+    Node&lt;T&gt;* p = new Node&lt;T&gt;(elem,top);
+    top=p;
+    return SUCCESS;
+}</code></pre><h3 id="出栈-1"><a href="#出栈-1" class="headerlink" title="出栈"></a>出栈</h3><pre><code>template&lt;class T&gt;
+Status LinkStack&lt;T&gt;::Pop(){
+    //判断栈是否为空
+    if(top==NULL)
+        return EMPTY;
+    else{
+        Node&lt;T&gt;* p=top;
+        top=top-&gt;next;
+        delete p;
+        return SUCCESS;
+    }
+}</code></pre><h2 id="栈的应用——表达式求值"><a href="#栈的应用——表达式求值" class="headerlink" title="栈的应用——表达式求值"></a>栈的应用——表达式求值</h2><p>计算机进行算数运算通常是用栈来实现的，算术运算终点讨论后缀表达式和中缀表达式。</p>
+<ul>
+<li><p>中缀表达式<br>  这种表达式表示运算符总是置于与之相关的2个运算对象之间，这种表达法被称为中缀表达式</p>
+<p>            1+2<em>(3-4</em>5)/6</p>
+</li>
+<li><p>后缀表达式<br>  这种表达方式的一个特点：表达式中各个运算时按照运算符出现的顺序进行的，所以不用括号来指示运算顺序，跟上面的式子等价的后缀表达式是：<br>          1 2 3 4 5 * - * 6 /  +</p>
+</li>
+</ul>
+<p>  后缀表达式的运算规则：读数字则继续往下读，读到运算符停止，在这个运算符之前的2个操作数做运算得到一个结果，然后继续往下读字符。</p>
+<p>那么上述表达式的运算顺序是：4 * 5的结果是20，在往下走是 - ，该操作符上面的2个操作对象，一个是20，一个就是3，3 - 20的结果是 -17；那么继续往下读字符，读到 * ，<code>*</code>号的操作对象有-17和2，2 * - 17 的运算结果是 -34，继续往下读到数字6，不做理会继续往下读，都到运算符<code>/</code>，<code>/</code>运算符之前的操作对象有 -34 和6，-34/6的结果约等于 -5.7，继续往下读字符，读到<code>+</code>运算符，<code>+</code>运算符的操作对象有-5.7和1，-5.7+1= -4.7。这个是最后的结果，与中缀表达式的结果一样。但是这种计算的实现相对于计算机要简单的多。</p>
+<hr>
+<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><p>  队列和栈相反，队列是一种<code>先进先出</code>的线性表，它只允许在表的一端插入元素，而在另一端删除元素。在队列中，允许插入的一段叫做队尾（rear），允许删除的一段叫做队头（front）。与我们日常生活中的排队是同一个现象。</p>
+<h2 id="队列的基本操作"><a href="#队列的基本操作" class="headerlink" title="队列的基本操作"></a>队列的基本操作</h2><ul>
+<li>初始化：初始化一个空队列</li>
+<li>求长度：统计队列中数据元素的数列</li>
+<li>取队头元素：当队列不空时，取队头的数据，返回成功状态；否则返回不成功状态。</li>
+<li>遍历队列：遍历输出队列里的元素</li>
+<li>判断队列是否为空：如果队列为空，返回TRUE；否则返回FALSE；</li>
+<li>入队：当队列不满时，在队尾插入一个新元素，返回成功信息；否则返回不成功状态。</li>
+<li>出队：当队列不为空时，删除队头元素，并返回成功信息；否则返回出队失败状态。</li>
+<li>清空队列：将队列设置为空队列。</li>
+</ul>
+<h2 id="队列的顺序存储实现方式"><a href="#队列的顺序存储实现方式" class="headerlink" title="队列的顺序存储实现方式"></a>队列的顺序存储实现方式</h2><p>  队列需要设置两个指针，分别是队头指针（front）和队尾指针（rear），指向队列的队头元素和队尾元素。在这里规定：队头指针front指向队头元素的所在位置；队尾指针（rear）指向队尾元素的后一个位置（像STL中的end迭代器一样）。注意，这里的出队其实在顺序存储实现方式中，也就是数组的实现方面其实并不是删除元素，而是将队头指针往后挪，而那个元素已经不要了，可以被新的元素替代。</p>
+<p>举个例子，假设有4个存储空间的队列，队列的最大长度maxSize为4，那么队列最多允许存储4个元素。初始化队列为空，接着A、B、C、D依次入队，然后A、B出队，这是队头front指针指向C所在位置，队尾指针rear指向第4个元素D，下标是3。如果元素E要入队，队尾指针要+1，这是队尾指针已经是3且maxSize是4，再加1要溢出了，但是队列已经出队了2个元素，此时队列还有2个存储空间也就是A和B的存储空间可以存储，这种不是因为存储空间不够而产生的溢出，称为假溢出。针对这个情况使用循环队列，就是把顺序队列所使用的存储空间构造成一个<code>逻辑上</code>首尾项链的循环队列，称为循环队列。</p>
+<p>解决思路：当队尾指针<code>rear</code>或者队头指针<code>front</code>指向<code>maxSize-1</code>的位置的时候,如果再进一个位置，就自动到0下标处，这一步可以通过求模（取余%）实现，取余的值就是maxSize。例如maxSize=4，rear=3，再加一rear=（rear+1）%4=0，队尾下一个位置就变成了0，那么就可以实现这个循环数组了。</p>
+<p>但是问题来了，如果按照上述方法实现的话，队列空和队列满这2中情况就相同无法分辨了。假设一个队列maxSize为5，A、B、C、D、E元素依次入队，下标分别是0、1、2、3、4，队尾指针rear根据rear=（4+1）%5=0，指针则会指向下标0位置，和队头指针front所指同一个元素。我们都知道，队列空时，队头指针front和队尾指针rear都是指向同一个位置下标[ 0 ]，那么该怎么区分这2种情况呢？对这2种情况的判断条件分别为:</p>
+<ul>
+<li>当队列为空时：<pre><code>front==rear;</code></pre></li>
+<li>当队列满时：<pre><code>front==(rear+1) % maxSize;</code></pre></li>
+</ul>
+<h2 id="顺序队列实现"><a href="#顺序队列实现" class="headerlink" title="顺序队列实现"></a>顺序队列实现</h2><h3 id="顺序队列类"><a href="#顺序队列类" class="headerlink" title="顺序队列类"></a>顺序队列类</h3><pre><code>template&lt;class T&gt;
+class SeqQueue {
+private:
+    T* data;            //数组
+    int front, rear;    //队头队尾
+    int maxSize;        //该数组的最大容量
+
+public:
+    //该类的方法应该包含： 初始化空队列、销毁队列、入栈、出栈、获取队头元素、display函数、获取长度等其他的函数
+    SeqQueue(int size);
+    ~SeqQueue();
+    Status getFront(T&amp; elem)const;
+    //Status getLength(T&amp; length)const;
+    bool empty()const;
+    void display()const;
+    Status Push(T elem);
+    Status Pop();
+};</code></pre><h3 id="构造函数-2"><a href="#构造函数-2" class="headerlink" title="构造函数"></a>构造函数</h3><pre><code>//构造函数
+template&lt;class T&gt;
+SeqQueue&lt;T&gt;::SeqQueue(int size) {
+    data = new T[size];
+    maxSize = size;
+    front = rear = 0;
+}
+</code></pre><h3 id="析构函数-2"><a href="#析构函数-2" class="headerlink" title="析构函数"></a>析构函数</h3><pre><code>//析构函数
+template&lt;class T&gt;
+SeqQueue&lt;T&gt;::~SeqQueue() {
+    delete[]data;
+}</code></pre><h3 id="获取队头元素"><a href="#获取队头元素" class="headerlink" title="获取队头元素"></a>获取队头元素</h3><pre><code>//获取队头元素
+template&lt;class T&gt;
+Status SeqQueue&lt;T&gt;::getFront(T&amp; elem)const {
+    //先判断队列是否为空
+    if (front == rear)
+        return EMPTY;
+    else 
+        elem = data[front];
+    return SUCCESS;
+}</code></pre><h3 id="遍历队列函数"><a href="#遍历队列函数" class="headerlink" title="遍历队列函数"></a>遍历队列函数</h3><pre><code>//遍历队列函数
+template&lt;class T&gt;
+void SeqQueue&lt;T&gt;::display()const {
+        for (int i = front;i != rear;i = (i + 1) % maxSize) 
+            cout &lt;&lt; data[i];
+}</code></pre><h3 id="判断队列是否为空"><a href="#判断队列是否为空" class="headerlink" title="判断队列是否为空"></a>判断队列是否为空</h3><pre><code>//判断队列是否为空
+template&lt;class T&gt;
+bool SeqQueue&lt;T&gt;::empty()const {
+    return (front == rear)? true:false;
+}</code></pre><h3 id="入队"><a href="#入队" class="headerlink" title="入队"></a>入队</h3><pre><code>//入队
+template&lt;class T&gt;
+Status SeqQueue&lt;T&gt;::Push(T elem) {
+    //判断队是否满了
+    //队尾+1的和取最大元素的余数==队头的话，表示队列已满
+    if ((rear + 1) % maxSize == front)
+        return OVER_FLOW;
+    else {
+        data[rear] = elem;
+        rear = (rear + 1) &amp; maxSize;
+        return SUCCESS;
+    }
+}</code></pre><h3 id="出队"><a href="#出队" class="headerlink" title="出队"></a>出队</h3><pre><code>//出队
+template&lt;class T&gt;
+Status SeqQueue&lt;T&gt;::Pop() {
+    //判断队是否是空的
+    if (front == rear)
+        return EMPTY;
+    else {
+        front = (front + 1) % maxSize;
+        return SUCCESS;
+    }
+}</code></pre><h2 id="链式队列实现"><a href="#链式队列实现" class="headerlink" title="链式队列实现"></a>链式队列实现</h2><h3 id="链式队列类"><a href="#链式队列类" class="headerlink" title="链式队列类"></a>链式队列类</h3><pre><code>template&lt;class T&gt;
+class LinkQueue {
+private:
+    Node&lt;T&gt;* front;
+    Node&lt;T&gt;* rear;
+public:
+    LinkQueue();        //构造函数
+    ~LinkQueue();
+    void clear();            //清空链表
+    int getLength()const;    //求长度
+    bool empty()const;        //判断链式队列是否为空
+    void display();    //
+    Status getFront(T&amp; elem)const;    //获取队头元素
+    Status Push(T elem);            //入队
+    Status Pop();                    //出队
+};</code></pre><h3 id="构造函数-3"><a href="#构造函数-3" class="headerlink" title="构造函数"></a>构造函数</h3><pre><code>//构造函数
+template&lt;class T&gt;
+LinkQueue&lt;T&gt;::LinkQueue() {
+    front = NULL;
+    rear = NULL;
+}</code></pre><h3 id="析构函数-3"><a href="#析构函数-3" class="headerlink" title="析构函数"></a>析构函数</h3><pre><code>//析构函数
+template&lt;class T&gt;
+LinkQueue&lt;T&gt;::~LinkQueue() {
+    clear();
+}</code></pre><h3 id="清空链队"><a href="#清空链队" class="headerlink" title="清空链队"></a>清空链队</h3><pre><code>//清空链队
+template&lt;class T&gt;
+void LinkQueue&lt;T&gt;::clear() {
+    Node&lt;T&gt;* p = front;
+    while (p!=NULL) {
+        front = p-&gt;next;
+        delete p;
+        p = front;
+    }
+    rear = front;
+}</code></pre><h3 id="求链队长度"><a href="#求链队长度" class="headerlink" title="求链队长度"></a>求链队长度</h3><pre><code>//求链队长度
+template&lt;class T&gt;
+int LinkQueue&lt;T&gt;::getLength()const {
+    if (front == rear)
+        return 0;
+    else {
+        int count = 0;
+        Node&lt;T&gt;* p = front;
+        while (p!=NULL)
+        {
+            p = p-&gt;next;
+            count++;
+        }
+        return count;
+    }
+}</code></pre><h3 id="display函数"><a href="#display函数" class="headerlink" title="display函数"></a>display函数</h3><pre><code>//display函数
+template&lt;class T&gt;
+void LinkQueue&lt;T&gt;::display() {
+    Node&lt;T&gt;* p = front;
+    while (p != NULL) {
+        cout &lt;&lt; p-&gt;data &lt;&lt; " ";
+        p = p-&gt;next;
+    }
+
+}</code></pre><h3 id="判断链队是否为空"><a href="#判断链队是否为空" class="headerlink" title="判断链队是否为空"></a>判断链队是否为空</h3><pre><code>//判断链队是否为空
+template&lt;class T&gt;
+bool LinkQueue&lt;T&gt;::empty()const {
+    return (front == NULL &amp;&amp; rear == NULL);;
+}</code></pre><h3 id="取队头元素"><a href="#取队头元素" class="headerlink" title="取队头元素"></a>取队头元素</h3><pre><code>//取队头元素
+template&lt;class T&gt;
+Status LinkQueue&lt;T&gt;::getFront(T&amp; elem)const {
+    if (front == rear)
+        return EMPTY;
+    else
+    {
+        elem = front-&gt;data;
+        return SUCCESS;
+    }
+}</code></pre><h3 id="入队-1"><a href="#入队-1" class="headerlink" title="入队"></a>入队</h3><pre><code>//入队
+template&lt;class T&gt;
+Status LinkQueue&lt;T&gt;::Push(T elem) {
+    //如果系统空间不够则返回溢出
+    //这里进队有2个状况，一种是空的队列要元素入队，一种是非空队列入队
+    //空队列的情况下，front和rear都是NULL，这时候元素入队，front和rear都会指向这个元素
+    //如果是非空队列的情况下入队，front指针不用做修改，而rear会指向这个新元素
+    //所以在函数体里面需要考虑这2种情况，要做一个判断，判断rear==NULL，如果等于NULL，那么表示是空队列，front和rear都要指向新元素
+    Node&lt;T&gt;* p = new Node&lt;T&gt;();
+    p-&gt;data = elem;
+    if (p)
+    {
+        if (rear!=NULL)
+        {
+            rear-&gt;next = p;
+            rear = rear-&gt;next;
+        }
         else
-            break;
-    }
-        return    length;
-}</code></pre><p>  声明一个length变量用来记录数组长度，设置一个for循环，该循环没有做判断表达式，所以这个循环是死循环，在判断内设置一个if判断，如果数组内的元素不等于0的时候，length自增，若元素==0时则break，退出循环，然后返回最后一次自增的length。</p>
-<p>  有了数组长度之后就好做循环了，当然计算数组长度的函数也可以定义在插入函数里面，在数组内 <code>i</code> 位置插入元素的函数的写法：</p>
-<pre><code>void  Insert( int a[] , int i , int value , int length){
-    //这里要做 数组空间是否足够的判断和 插入位置 i 是否在 1 ~ length+2 的区间内的判断
-    //我这里省略了这2步做法
-    for( int j = length ; j &gt;= i ; j--){
-        a[j] = a[j-1] ; //将元素往后挪，第一轮循环，J是最后一个元素的下标+1
-    }
-    a[i-1] = value;     // 数组的排序是从0开始的，所以 i位置元素的下标表示是 i-1
-
-    //从头部插入则 i 位置换成1即可。
-}</code></pre><h2 id="二、删除元素（Delete）"><a href="#二、删除元素（Delete）" class="headerlink" title="二、删除元素（Delete）"></a>二、删除元素（Delete）</h2><p>  删除元素表示从 <code>i</code> 位置把元素删除，然后 <code>i</code> 位置后面的元素全部往前挪一步，如果要删除第三个位置的元素，那么从第4个位置的元素开始就要往前挪一个位置，效果如下：<br><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/%E6%95%B0%E7%BB%84%E5%86%85%E5%85%83%E7%B4%A0%E5%90%91%E5%89%8D%E6%8C%AA%E5%8A%A8%E4%BD%8D%E7%BD%AE-gif%E5%8A%A8%E7%94%BB.gif" alt=""></p>
-<p>这时候就不能使用递减的方式来控制循环了，使用递增方式，初始表达式是<code>i</code>位置，终点是数组最后一个元素下标：</p>
-<pre><code>//这里为了方便显示直接传元素下标进去，不穿元素值，如果传元素值也就是遍历一遍数组，记录元素值的下标在进行for循环操作即可。
-void Delete( int a[], int i ,int length){
-  for(int j = i; i&lt;= length; j++){
-    a[j-1]=a[j];
-  }
-  a[length-1]=0;
-}
-</code></pre><h2 id="三、修改元素（Update）和查找元素（query）"><a href="#三、修改元素（Update）和查找元素（query）" class="headerlink" title="三、修改元素（Update）和查找元素（query）"></a>三、修改元素（Update）和查找元素（query）</h2><p>  修改元素与查找元素本质上操作是一样的，二者区别在于修改元素操作比查找元素操作多了一步修改值而已。首先遍历整个数组，在遍历每一个元素的时候需要拿要查找或者修改的元素一一与数组元素相比较，若元素相等，查找则返回该元素的下标，修改则该元素修改为修改后的元素的。下面给出2个操作的代码：</p>
-<pre><code>bool Update( int a[], int i , int value){
-    for( int j = 0 ; j&lt;= ArrayLength(a); j++){
-        if(a[j]==i){
-            a[j]=value;
-            return true;
+        {
+            front = p;
+            rear = p;
         }
+        return SUCCESS;
     }
-    return flase;
+    else
+    {
+        //如果p为NULL，那么就是内存空间不足，创建不了结点
+        return OVER_FLOW;
+    }
 }
+</code></pre><h3 id="出队-1"><a href="#出队-1" class="headerlink" title="出队"></a>出队</h3><pre><code>//出队
+template&lt;class T&gt;
+Status LinkQueue&lt;T&gt;::Pop() {
+    //先判断这个队列是不是空的，如果是空的直接结束程序
+    //如果队列是非空队列，那么就做出队操作
+    //注意，出队之后，front需要向后移动的，如果要出队的结点是最后一个结点的时候，front向后移就是NULL了，rear指针也会因为元素的出队而指向一个不存在的结点。
+    //这时需要做一个判断，在front做移动之后，指向NULL的时候，那么rear也要等于NULL
 
-#di
-int Query(int a[],int value){
-    for(int j = 0 ; j&lt;= ArrayLength(a);j++){
-        if(a[j]==i){
-            return j;
-        }
+    Node&lt;T&gt;* p;
+    //判断队列是否为空
+    if (front != NULL) 
+    {
+        p = front;
+        front = front-&gt;next;
+        //判断front移动之后队列是否变成空队列了
+        //如果是空队列，rear==null
+        if (front==NULL)
+            rear = NULL;
+        delete p;
+        return SUCCESS;
     }
-    return -1;
-}</code></pre><blockquote>
-<p>上述代码都是比较简单的数组实现，根据需求的不同来写代码</p>
-</blockquote>
-<script>
+    else
+        return EMPTY;
+}
+</code></pre><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -578,7 +904,7 @@ int Query(int a[],int value){
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://jianhao66.gitee.io/2020/03/07/shu-zu-nei-yuan-su-de-bian-dong-xing-cao-zuo-yuan-li-xiang-jie/">http://jianhao66.gitee.io/2020/03/07/shu-zu-nei-yuan-su-de-bian-dong-xing-cao-zuo-yuan-li-xiang-jie/</a>
+                    <a href="http://jianhao66.gitee.io/2020/04/04/zhan-he-dui-lie/">http://jianhao66.gitee.io/2020/04/04/zhan-he-dui-lie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -616,8 +942,8 @@ int Query(int a[],int value){
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">算法</span>
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                    <span class="chip bg-color">数据结构</span>
                                 </a>
                             
                         </div>
@@ -1046,49 +1372,47 @@ int Query(int a[],int value){
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/17/mian-xiang-dui-xiang-she-ji-yuan-ze/">
+                <a href="/2020/04/04/zhan-he-dui-lie/">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/img-91c6a55525b25b0bc9ed2b3dee91024f.jpg" class="responsive-img" alt="面向对象设计原则及模板方法模式">
+                        <img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/img-01fd4eebaf4ca4830542ff7982b4161b.jpg" class="responsive-img" alt="数据结构-栈和队列">
                         
-                        <span class="card-title">面向对象设计原则及模板方法模式</span>
+                        <span class="card-title">数据结构-栈和队列</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            面向对象设计原则和模板方法设计模式
+                            栈和队列的基本概念以及代码实现
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
-                                    设计模式
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    数据结构
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                        <span class="chip bg-color">设计模式</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">数据结构</span>
                     </a>
                     
                 </div>
@@ -1102,30 +1426,30 @@ int Query(int a[],int value){
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/01/c-stl-ge-chong-rong-qi/">
+                <a href="/2020/03/19/xian-xing-biao/">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/背景.jpg" class="responsive-img" alt="C++ STL 各种容器">
+                        <img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/img-ba40e8db67f132e43f5473e1bf736787.jpg" class="responsive-img" alt="数据结构-线性表以及实现方式">
                         
-                        <span class="card-title">C++ STL 各种容器</span>
+                        <span class="card-title">数据结构-线性表以及实现方式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            STL库中的各种容器和所属函数的简单学习笔记
+                            线性表的基本概念以及顺序链式实现代码
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/C/" class="post-category">
-                                    C++
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    数据结构
                                 </a>
                             
                             
@@ -1135,12 +1459,12 @@ int Query(int a[],int value){
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">数据结构</span>
                     </a>
                     
-                    <a href="/tags/STL/">
-                        <span class="chip bg-color">STL</span>
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
                     </a>
                     
                 </div>
