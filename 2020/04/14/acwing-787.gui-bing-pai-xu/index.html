@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="UML统一建模语言整理, Zebre - 热情可抵岁月漫长">
-    <meta name="description" content="对UML知识点进行简单的整理">
+    <meta name="keywords" content="AcWing 第787题. 归并排序, Zebre - 热情可抵岁月漫长">
+    <meta name="description" content="AcWing算法学习网站学习记录">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>UML统一建模语言整理 | Zebre - 热情可抵岁月漫长</title>
+    <title>AcWing 第787题. 归并排序 | Zebre - 热情可抵岁月漫长</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -304,12 +304,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/风景2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/背景.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">UML统一建模语言整理</h1>
+                    <h1 class="description center-align post-title">AcWing 第787题. 归并排序</h1>
                 </div>
             </div>
         </div>
@@ -426,8 +426,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/UML/">
-                                <span class="chip bg-color">UML</span>
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
+                            </a>
+                        
+                            <a href="/tags/AcWing/">
+                                <span class="chip bg-color">AcWing</span>
                             </a>
                         
                     </div>
@@ -442,7 +446,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-26
+                    2020-04-14
                 </div>
                 
 
@@ -451,14 +455,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.5k
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    15 分
+                    5 分
                 </div>
                 
 
@@ -474,256 +478,88 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、UML统一建模语言组成"><a href="#一、UML统一建模语言组成" class="headerlink" title="一、UML统一建模语言组成"></a>一、UML统一建模语言组成</h1><h2 id="1-1、基本元素"><a href="#1-1、基本元素" class="headerlink" title="1.1、基本元素"></a>1.1、基本元素</h2><p>按照可视化的角度来看，可以分为：</p>
-<ul>
-<li><code>视图</code></li>
-<li><code>图</code></li>
-<li><code>模型元素</code></li>
-</ul>
-<p>按照功能的不同又可以划分为：</p>
-<ul>
-<li><code>静态视图</code></li>
-<li><code>用例视图</code></li>
-<li><code>交互视图</code></li>
-<li><code>状态机视图</code></li>
-<li><code>活动视图</code></li>
-<li><code>物理视图</code></li>
-<li><code>模型管理视图</code></li>
-</ul>
-<p>下面会这些基本元素进行介绍。</p>
-<h2 id="1-2-视图"><a href="#1-2-视图" class="headerlink" title="1.2 视图"></a>1.2 视图</h2><p>  UML是用模型来描述<strong>系统的结构</strong>、<strong>静态特征</strong>以及<strong>行为和动态特征</strong>的，各个构件和概念之间并没有很明显的划分界限，统一使用视图来概括这些概念和构建；视图只是表达系统某一方面特征的UML建模构件的子集；<br>  视图根据功能又划分为：<code>静态视图</code>、<code>用例视图</code>、<code>交互视图</code>、<code>状态机视图</code>、<code>活动视图</code>、<code>物理视图</code>、<code>模型管理视图</code>。</p>
-<ul>
-<li><p>静态视图<br>   静态视图是UML的基础，静态视图描绘的是客观现实世界的基本认知元素，是我们建立的一个系统中所需概念的集合；构造了这些概念对象的基本结构，静态视图不仅包括所有的对象数据结构，也包括了对数据的操作，即对象和方法；是建立其他动态视图的基础</p>
-</li>
-<li><p>用例视图<br>  用例视图描述了系统的参与者于系统进行交互的功能，是参与者所能观察和使用到的系统功能的模型图。    </p>
-<ul>
-<li>用例视图捕获了系统、子系统和用户执行的动作行为；</li>
-<li>用户视图将系统描述为系统参与者对系统功能的需求，这种需求称作为用例；</li>
-<li>用户视图使用用例图来表示。</li>
+                <h1 id="AcWing-787-归并排序"><a href="#AcWing-787-归并排序" class="headerlink" title="AcWing 787. 归并排序"></a>AcWing 787. 归并排序</h1><h2 id="题干"><a href="#题干" class="headerlink" title="题干"></a>题干</h2><p>给定你一个长度为n的整数数列。<br>请你使用归并排序对这个数列按照从小到大进行排序。<br>并将排好序的数列按顺序输出。</p>
+<p><strong>输入格式</strong><br>输入共两行，第一行包含整数 n。<br>第二行包含 n 个整数，表示整个数列</p>
+<p><strong>输出格式</strong><br>输出共一行，包含 n 个整数，表示排好序的数列。</p>
+<p><strong>数据范围</strong><br>1 &lt;= n &lt;= 100000</p>
+<p><strong>输入样例</strong></p>
+<pre><code>5
+3 1 2 4 5</code></pre><p><strong>输出样例</strong></p>
+<pre><code>1 2 3 4 5</code></pre><h2 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h2><ol>
+<li>确定这个长度为 n 的整数数列的中位数mid，mid = 0 + (n-1) / 2；</li>
+<li>先判断传入的数组的个数是否等于0或者等于1，如果等于0或等于1的话就直接返回；</li>
+<li>分别对这中位数mid的左边区间和右边区间进行递归处理排序；</li>
+<li>定义一个临时数组temp，结果存放在这个数组里面；</li>
+<li>定义2个指针 i 和 j 分别指向左右区间的起始位置；左边区间的起止位置是：left和mid，右边区间的起止位置是 mid+1和 right；<ul>
+<li>left 和 righ’t 是调用该函数时传入的实参；</li>
 </ul>
 </li>
-<li><p>交互视图<br>  交互视图描述了执行系统功能的各个角色之间相互传递消息的顺序关系，是描绘系统中各种角色或功能交互的模型；适合描述一组对象的整体行为。</p>
-</li>
-<li><p>状态机视图<br>  状态机视图通过对象的各个状态来建立模型，用于描述对象随着时间变化的动态行为；<br>  状态机视图也是通过不同对象间的相互作用来描述系统的行为，对交互视图来说，它是以独立对象为中心来描述，而交互视图是以一组对象来描述的</p>
-</li>
+<li><strong>i</strong> 指针指向的是左区间起始位置，<strong>j</strong> 指针指向的是右区间起始位置，这里定义一个变量 <strong>k</strong>，赋初值为0，这个变量代表着临时数组的下标。这2个指针所指向的数据进行比较，这时会有2种情况：<ul>
+<li>若<strong>i</strong> 指针所指数据小于 <strong>j</strong> 指针所指数据，那么将 <strong>i</strong> 指针所指数据赋值给 <strong>temp</strong> 数组；</li>
+<li>若<strong>i</strong> 指针所指数据大于 <strong>j</strong> 指针所指数据，那么将 <strong>j</strong> 指针所指数据赋值给 <strong>temp</strong> 数组；</li>
+<li>上述情况出现之后将 <strong>i</strong> 指针或者 <strong>j</strong> 指针以及记录 <strong>temp</strong> 数组下标的变量 <strong>k</strong> 更新（自增1），</li>
+<li>结束条件是这2个区间中任意一个区间指针都走到了右边界；</li>
 </ul>
-<h2 id="1-3-图"><a href="#1-3-图" class="headerlink" title="1.3 图"></a>1.3 图</h2><p>  UML为了使开发过程中的应用程序更加容易理解，将模型进行图形化表示，而且严格定义了各种模型元素的符号，还包括了这些模型和符号的抽象语法和语义。<br>  最常用的UML图包括 <code>用例图</code>、<code>类图</code>、<code>序列图</code>、<code>状态图</code>、<code>活动图</code>、<code>构件图</code>和<code>部署图</code></p>
-<ul>
-<li>用例图</li>
-<li>类图</li>
-<li>序列图     </li>
-</ul>
-<p>   这些图后面有详细的片段去介绍。</p>
-<h2 id="1-4-模型元素"><a href="#1-4-模型元素" class="headerlink" title="1.4 模型元素"></a>1.4 模型元素</h2><p>  我们在图中所使用到的基本概念统称为“模型元素”；模型元素使用相关的语义和关于元素的正式定义，在图中都有相应的元素表示；<br>  模型元素分为2部分：  <code>事物</code> 、 <code>关系</code> 。<br>   <code>事物</code> 是UML模型中基本的面向对象的模块，在模型中属于静态部分，定义了四种面向对象的事物，分别是结构事物、行为事物、分组事物、注释事物。    </p>
-<img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/20200227155048.png" width="90%/">
+</li>
+<li>跳出循环的条件是左右2个区间中的任意一个区间指针都已经走到了右边界，那么还有另外一个区间没有赋值完，那么下一步就要把另一个区间的剩余元素都赋值给 <strong>temp</strong> 数组</li>
+<li>最后将 <strong>temp</strong> 数组的元素逐一赋值给原有数组，起始边界是函数实参 <strong>left</strong> ，结束条件是&lt;= <strong>right</strong> 。</li>
+</ol>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code>#include&lt;iostream&gt;
+using namespact std;
+
+const int N = 1e6 + 10;
+int q[N],temp[N],n;
+
+void merge_sort(int q[] , int left , int right){
+    if( left &gt;= right ) return;
+    int mid = left + right &gt;&gt; 1;
+    merge_sort(q,left,mid);
+    merge_sort(q,mid+1,right);
+
+    int k = 0 , i = left, j = mid + 1;
+    while( i &lt;= mid &amp;&amp; j &lt;= right)
+        if( q[i] &lt; q[j] ) temp[k++] = q[i++];
+        else temp[k++] = q[j++];
+    while ( i &lt;= mid ) temp[k++] = q[i++];
+    while ( j &lt;= right ) temp[k++] = q[j++];
+
+    for( int i = left,j = 0 ; i &lt;= right ; i++,j++)
+        q[i] = temp[j];
 
 
-<p>  <code>关系</code>  UML模型是由各种事物以及这些事物之间各种关系构成的。这些关系指支配、协调各种模型元素存在并相互使用的规则；<br>  UML中主要包含七种关系：  <code>依赖</code>  、  <code>关联</code>  、  <code>泛化</code>  、  <code>实现</code>  、  <code>聚集</code>  、  <code>组成</code>  、  <code>包含</code>  、  <code>扩展</code>  。</p>
-<hr>
-<h1 id="二、用例图"><a href="#二、用例图" class="headerlink" title="二、用例图"></a>二、用例图</h1><p>   由参与者（Actor）、用例（Use case）以及它们之间的关系构成的用于描述系统功能的动态视图叫做用例图。用例图是需求分析的产物，主要作用是描述参与者和用例之间的作用，帮助开发人员可视化地了解系统的功能。</p>
-<h2 id="2-1-用例图的构成要素"><a href="#2-1-用例图的构成要素" class="headerlink" title="2.1 用例图的构成要素"></a>2.1 用例图的构成要素</h2><ul>
-<li><p>参与者<br>          参与者是指存在于系统外部并直接与系统交互的人、系统、子系统或类实体的抽象；通过参与者，可以对软件系统与外界发生的交互进行分析描述，可以了解客户希望软件系统提供哪些功能，用一个小人来表示。    </p>
-</li>
-<li><p>用例<br>  用例是系统为响应参与者引发的一个事件而执行的一系列的处理/动作，而这些处理应该为参与者产生一种由价值的结果，是用一个椭圆图形表示。    </p>
-</li>
-<li><p>系统边界<br>  用例图种的系统边接是用来表示正在建模的系统边界；边界内表示系统内部，边界外表示系统外部；系统边界决定了参与者，只要搞清楚了系统边界，才能更好地确定系统的参与者和用例。系统边界用一个长方形矩形框表示，内部表示内部，外面表示系统外部。    </p>
-</li>
-<li><p>关联<br>  关联表示了用例和参与者可能会存在的关系。    </p>
-</li>
-</ul>
-<h2 id="2-2-用例规约"><a href="#2-2-用例规约" class="headerlink" title="2.2 用例规约"></a>2.2 用例规约</h2><p>  用例图只是在总体上大致描述了系统所提供的各种服务，但对每一个具体的用例还需要详细地描述信息，以便让别人对整个系统由更加详细的了解，这些信息包含在用例规约之中。    </p>
-<p>用例规约应该包含以下内容：    </p>
-<ul>
-<li><p>简要说明<br> 简要说明是指对用例作用和目的的简要描述；    </p>
-</li>
-<li><p>事件流<br> 事件流包含 <code>基本流</code> 和 <code>备选流</code> ；<br>   基本流：是指用例在运行正常时所要经过的场景和选项；<br>   备选流：指用例在运行过程中可能发生的异常状况和场景选项；<br> 基本流和备选流组合起来能够覆盖一个用例所有可能会发生的场景。    </p>
-</li>
-<li><p>用例场景<br> 用例在实际执行的时候会有很多不同的情况发生，用例场景包括成功场景和失败场景，在用例规约中，由基本流和备选流的组合来对场景进行描述。    </p>
-</li>
-<li><p>特殊需求<br> 特殊需求是指一个用例的非功能性需求和设计约束。    </p>
-</li>
-<li><p>前置条件<br> 前置条件是指执行用例时系统必须所在的状态；想要执行用例，必须有某些前提条件，前提条件就是前置条件。    </p>
-</li>
-<li><p>后置条件<br> 后置条件是指用例执行完毕后系统可能出与的一组状态；执行完用例后，开发者想让系统所处的一个状态。</p>
-</li>
-</ul>
-<hr>
-<h1 id="三、类图和对象图"><a href="#三、类图和对象图" class="headerlink" title="三、类图和对象图"></a>三、类图和对象图</h1><h2 id="3-1-类图的组成"><a href="#3-1-类图的组成" class="headerlink" title="3.1 类图的组成"></a>3.1 类图的组成</h2><p>      在UML中，类的表示符号是一个矩形三角形，该三角形中从上到下分为三部分，这三部分分别代表了整个类的 类名称、属性、操作。<br><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/1.jpg" alt=""></p>
-<h3 id="3-1-1-类的名称"><a href="#3-1-1-类的名称" class="headerlink" title="3.1.1 类的名称"></a>3.1.1 类的名称</h3><ol>
-<li>类的名称时整个类图必须拥有的元素，同其他类进行区分；</li>
-<li>是一个字符串，并且是名词；</li>
-<li>类名词需要遵守大驼峰命名法（ 首字母大写，后面每一个单词的首字母都要大写）；</li>
-<li>分为简单名称和路径名称。    </li>
-</ol>
-<h3 id="3-1-2-类的属性"><a href="#3-1-2-类的属性" class="headerlink" title="3.1.2 类的属性"></a>3.1.2 类的属性</h3><ol>
-<li>类的属性是类的一个特性，也是类的组成部分，描述了类在软件系统中代表的事物（ 即对象 ）所具备的特性，这些特性是所有对象共有的；</li>
-<li>类的属性用编程语言来表示，通常就是变量；</li>
-<li>类的属性是可有可无的，并不是必须拥有，可以具有零个或者多个属性；<br> UML中，类属性的语法为： （[ ] 表示可选）<br>  [可见性] 属性名称 [：属性类型]  [=初始值] [{属性字符串}]    </li>
-</ol>
-<p>可见性包括： <code>Public （公开的）、Private（私有的）、Protected（受保护的）</code></p>
-<table>
-<thead>
-<tr>
-<th>Public （公开的）</th>
-<th>外部类和内部类都可以使用和查看这些属性</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Private（私有的）</td>
-<td>只有类本身才可以查看，外部一律查看不了，这个类派生（继承）的类也查看不了</td>
-</tr>
-<tr>
-<td>Protected（受保护的）</td>
-<td>这个类派生的子类可以访问这些被保护的属性</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h3 id="3-1-3-类的操作"><a href="#3-1-3-类的操作" class="headerlink" title="3.1.3 类的操作"></a>3.1.3 类的操作</h3><p>  类的操作指的是类所能执行的操作，是类的一个重要组成部分，描述了在软件系统中所代表的对象具备的动态部分的公共特征抽象；类的操作被放在类图的最底层，操作被称为方法或者函数。    </p>
-<p>• UML中，类属性的语法为： （[ ] 表示可选）                 </p>
-<p> [可见性] 属性名称 [：属性类型]  [=初始值] [{属性字符串}]</p>
-<p>可见性包括： Public （公开的）、Private（私有的）、Protected（受保护的）</p>
-<table>
-<thead>
-<tr>
-<th>可见性</th>
-<th align="center">分为 Public（公开）、Private（私有的）、Protected（受保护的），必选项</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>操作名称</td>
-<td align="center">必选项，用于区分别的方法操作</td>
-</tr>
-<tr>
-<td>参数表</td>
-<td align="center">有数据类型、标识符组成的序列，是由操作或者方法被调用是接收传递过来的参数值的变量，采用 “ 名称：类型”的方式定义，不是必须的</td>
-</tr>
-<tr>
-<td>返回类型</td>
-<td align="center">返回类型指定了由操作返回的数据类型，返回值只能返回一个，如果没有返回值，该处使用 void 关键字代替</td>
-</tr>
-<tr>
-<td></td>
-<td align="center"></td>
-</tr>
-</tbody></table>
-<h3 id="3-1-4-类的关系"><a href="#3-1-4-类的关系" class="headerlink" title="3.1.4 类的关系"></a>3.1.4 类的关系</h3><p>  类于类之间的关系有4种：<code>依赖关系</code>、<code>泛化关系</code>、<code>关联关系</code>、<code>实现关系</code></p>
-<hr>
-<h1 id="四、序列图"><a href="#四、序列图" class="headerlink" title="四、序列图"></a>四、序列图</h1><p>  序列图用于对系统中一组对象群体的行为建模，主要用来表达对象之间的动作协作关系，通常用来描述用例的行为实现；序列图将交互关系表示为一个二维图，其中，纵向是时间轴，时间轴沿竖线向下延申。横向代表了在协作中各独立对象的角色。<br>  序列图是对对象之间传送消息的时间顺序的可视化表示。序列图的主要用途是把用例表达的需求，转化为进一步、更加正式层次的精细表达。</p>
-<h2 id="4-1-序列图的组成"><a href="#4-1-序列图的组成" class="headerlink" title="4.1 序列图的组成"></a>4.1 序列图的组成</h2><p>  序列图由<code>对象</code>、<code>生命线</code>、<code>激活框</code>、<code>消息</code>组成</p>
-<ul>
-<li>对象    <ul>
-<li>对象是类的实例，序列图中的对象可以是系统参与者，也可以是任何有效的系统对象;</li>
-<li>使用矩形框来表示，显示的对象和类类名下面带有下划线，对象和类用冒号隔开;</li>
-<li>对象的下面有一条生命线的垂直虚线。</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/%E5%AF%B9%E8%B1%A1.png" alt="对象图"></p>
-<ul>
-<li><p>生命线</p>
-<p>  生命线（Lifeline）是一条垂直的虚线，表示序列图中的对象在一段时间内的存在;每个对象的底部中心的位置都带有生命线;生命线是一个时间线，从序列图的顶部一直延伸到底部，所用的时间取决于交互持续的时间</p>
-<p><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/shengmingxian.png" alt="生命线"></p>
-</li>
-<li><p>激活框</p>
-<p>  序列图可以描述对象的激活（Activation），表示一个对象完成操作的过程;激活表示该对象被占用正在执行某个操作;激活在序列图中用一个细长的矩形框表示，矩形框称为激活条或控制期。<br>矩形框的顶端与激活时间对齐，而底端与完成时间对齐。</p>
-</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/diaoyong.png" alt="激活框"></p>
-<ul>
-<li>消息</li>
-</ul>
-<p>   消息是从一个对象（发送者）向另一个或几个对象（接收者）发送信号，或由一个对象调用另一个对象的操作;</p>
-<p>  面向对象方法中，消息是对象间交互信息的主要方式表现为：    </p>
+}
+
+int main(){
+    scanf("%d",&amp;n);
+    for(int i = 0 ; i &lt; n ; i++) scanf("%d",&amp;q[i]);
+    merge_sort(q,0,n-1);
+
+    for(int i = 0 ; i &lt; n ; i++) printf("%d ",q[i]);
+}</code></pre><h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><blockquote>
+<p>if( left &gt;= right ) return;</p>
+</blockquote>
+<p>上述是判断传入的数组边界和个数是否等于0或者等于1，如果等于0或等于1的话就直接return，0个或1个就无需排序；</p>
 <blockquote>
-<p>对象A向对象B发送消息，即为对象A调用对象B的一个成员函数</p>
-</blockquote>
-<p>  消息有三部分组成：<code>发送者</code>、<code>接收者</code>和<code>活动</code>。<br>  消息的表示形式为从发送者对象的生命线指向接收者对象生命线的箭头，箭头的类型表示了消息的类型。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/digui.png" alt="消息"></p>
-<p>序列图所有元素的例图：<br><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/xulietu-all.png" alt="序列图所有元素"></p>
-<hr>
-<h1 id="五、活动图"><a href="#五、活动图" class="headerlink" title="五、活动图"></a>五、活动图</h1><p>  活动图是用于描述系统行为的模型视图，用来描述动作和动作导致对象状态改变的结果，而不用考虑引发状态改变的事件；考虑引发状态改变事件的图就是状态图。</p>
-<p>  活动图表示一个程序或工作流，常用于计算流程和工作流程的建模；着重描述用例或者对象的活动，以及操作实现中所完成的工作。    </p>
-<ol>
-<li>描述一个操作执行过程中所完成的工作；</li>
-<li>对用例图的工作流进行建模，显示用例内部和用例之间的路径；</li>
-<li>显示如何执行一组相关的动作；</li>
-<li>活动图对理解业务处理过程十分有用；活动图可以画出工作流用以描述业务，可以通过活动图来明确业务处理操作时如何进行的，以及可能产生的变化。</li>
-</ol>
-<h2 id="5-1-活动图的组成元素"><a href="#5-1-活动图的组成元素" class="headerlink" title="5.1 活动图的组成元素"></a>5.1 活动图的组成元素</h2><p>  活动图由<code>初态</code>,<code>终态</code>,<code>动作状态</code>,<code>活动状态</code>,<code>分叉与结合</code>,<code>分支和合并</code>，<code>泳道</code>组成。</p>
-<ol>
-<li><p>初态<br>活动图的起点，使用一个实心圆表示；有且只有一个。</p>
-</li>
-<li><p>终态<br>活动图的重点，使用一个黑心圆表示；可以有多个。</p>
-</li>
-<li><p>动作状态    </p>
-<ul>
-<li>没有入口、出口动作，没有内部转移；    </li>
-<li>瞬时性；是瞬间完成的；    </li>
-<li>不可中断；</li>
-<li>具有原子性，意为不可再分解有自状态了；  </li>
-</ul>
-</li>
-<li><p>活动状态    </p>
-<ul>
-<li>有入口、出口动作，有内部转移    </li>
-<li>活动状态至少有一个输出完成转换    </li>
-<li>活动状态可以分解，可以用另外一个活动图来描述自己的内部活动；    </li>
-<li>活动状态和动作状态表示图标都一样，活动状态可以表出出口和入口动作    </li>
-</ul>
-</li>
-<li><p>分支与合并    </p>
-<ul>
-<li>分支：将转换路径分为多个部分，每个部分都由单独的监护条件和不同的结果。当动作流到分支处会根据监护条件布尔表达式的真假来决定动作的流向，且每个动作流都是互斥的;    </li>
-<li>合并：指的时两个或者多个控制路径再次汇合；    </li>
-</ul>
-</li>
-</ol>
+<pre><code>int mid = left + right &gt;&gt; 1;
+merge_sort(q,left,mid);
+merge_sort(q,mid+1,right);</code></pre></blockquote>
+<p>上述计算 mid 值以及递归处理排序这左右区间的元素，需要注意的是左右区间的起止位置，左区间是从 left — mid；右区间是 mid+1 —— right。</p>
 <blockquote>
-<p>注意合并和结合的区别：合并是汇合了由分支分出了多个互斥的控制流，而且都会只走一条控制流；<br>而结合是汇合了两条或者更多条以上的并行控制流，在执行过程中，每一条路径都要走过，且每条控制流都走完后才能由结合继续往下转换。    </p>
+<p>int k = 0 , i = left, j = mid + 1;</p>
 </blockquote>
-<ol start="6">
-<li>分叉和结合    <ul>
-<li>分叉：表示将一个控制流分成两个或多个并发运行的分支；</li>
-<li>结合：表示并行分支再次得到同步和结束。    </li>
-</ul>
-</li>
-</ol>
+<p>变量k是tmp数组的下标，初值为0；i 指针是左区间的第一个元素位置，j 指针是右区间的第一个元素位置。</p>
 <blockquote>
-<p>注意:由分叉分出去的控制流，先完成的再结合处等待，只有当所有的控制流都到达结合点后，控制才会继续往下执行</p>
+<p>   while( i &lt;= mid &amp;&amp; j &lt;= right)<br>        if( q[i] &lt; q[j] ) temp[k++] = q[i++];<br>        else temp[k++] = q[j++];</p>
 </blockquote>
-<ol start="7">
-<li>泳道<br> 将参与者与系统或者参与系统中的类区分开来，可以在泳道里交叉线，但是不宜过多。</li>
-</ol>
-<hr>
-<h1 id="六、状态图"><a href="#六、状态图" class="headerlink" title="六、状态图"></a>六、状态图</h1><p>    状态图用于描述一个对象在其生命周期期间可能会发生的行为和事件，清晰地描述了状态之间的转换顺序，通过转换的转换顺序也就可以清晰第看出事件的执行顺序。如果没有状态图我们就不可避免地要使用大量的文字来描述外部事件的合法顺序。</p>
-<p>  清晰的事件顺序有利于程序员在开发程序时避免出现事件顺序错误的情况,状态图清晰地描述了状态转换时所必须的触发事件、监护条件和动作等影响转换的因素。</p>
-<h2 id="6-1-状态图的组成"><a href="#6-1-状态图的组成" class="headerlink" title="6.1 状态图的组成"></a>6.1 状态图的组成</h2><p>  状态图由<code>状态</code>、<code>转换</code>、<code>事件</code>3个元素组成。</p>
-<ul>
-<li>状态<br>状态又分为<code>状态名</code>、<code>内部活动</code>、<code>内部转换</code>、<code>入口动作</code>、<code>出口动作</code>    <ol>
-<li>内部活动：当进入状态时，就开始内部活动，当活动结束时，状态也就结束了</li>
-<li>内部转换：状态可以包含一系列的内部转换，内部转换和内部活动不同，完成内部转换并不影响和改变状态的本身；内部转换只有源状态，没有目标状态，不会激发入口和出口动作。</li>
-<li>入口动作：当进入状态时，入口动作被执行，在执行内部活动前执行入口动作；入口动作通常用于对状态进行内部初始化，因为最先执行的是入口动作。</li>
-<li>出口动作：退出状态时会执行出口动作。</li>
-</ol>
-</li>
-</ul>
+<p>上述是将左右区间的 i 指针和 j 指针所指元素进行比较，双方比较之后哪一方更小那么就将指针所指元素赋值给 temp 数组，并对指针进行更新（自增1）；循环的结束条件是左右区间的指针走到边界，左区间的边界是mid，右区间的边界是right。</p>
 <blockquote>
-<p>内部活动和内部转换都是使用表达式来表达。</p>
+<p>   while ( i &lt;= mid ) temp[k++] = q[i++];</p>
 </blockquote>
-<ul>
-<li>转换<br>转换表示2个状态之间的一种关系，即在一个在某初始状态的对象通过执行指定的动作并符合一定的条件下进入第二种状态；<br>转换又被分为：外部转换、内部转换、触发器事件、监护条件、动作；    <ul>
-<li>外部转换：是一种改变状态的转换，用从源状态到目标状态的带箭头的线段表示；</li>
-<li>监护条件：护条件是一个布尔表达式，是触发转换必须满足的条件；当监护条件的值为真时，转发可以激活。<blockquote>
-<p>监护条件的值为假时，转换不能激活</p>
+<pre><code>while ( j &lt;= right ) temp[k++] = q[j++];</code></pre><p>上述是跳出第一个while循环之后的情况，第一个while循环的条件是：<br><code>while( i &lt;= mid &amp;&amp; j &lt;= right)</code><br>运算符是逻辑与，只要有一个不满足就跳出循环，代表着有一个区间已经将所有元素都添加到了 temp 数组里面，那么就将另外一个区间的剩余元素都赋值给 temp 数组内。</p>
+<blockquote>
+<p>   for( int i = left,j = 0 ; i &lt;= right ; i++,j++)<br>        q[i] = temp[j];</p>
 </blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
+<p>最后一步就将 temp 数组内的元素都赋值给 q 数组</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -767,7 +603,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://jianhao66.gitee.io/2020/02/26/uml-tong-yi-jian-mo-yu-yan-zheng-li/">http://jianhao66.gitee.io/2020/02/26/uml-tong-yi-jian-mo-yu-yan-zheng-li/</a>
+                    <a href="http://jianhao66.gitee.io/2020/04/14/acwing-787.gui-bing-pai-xu/">http://jianhao66.gitee.io/2020/04/14/acwing-787.gui-bing-pai-xu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -805,8 +641,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/UML/">
-                                    <span class="chip bg-color">UML</span>
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
+                                </a>
+                            
+                                <a href="/tags/AcWing/">
+                                    <span class="chip bg-color">AcWing</span>
                                 </a>
                             
                         </div>
@@ -1235,49 +1075,47 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/01/c-stl-ge-chong-rong-qi/">
+                <a href="/2020/04/14/acwing-787.gui-bing-pai-xu/">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/背景.jpg" class="responsive-img" alt="C++ STL 各种容器">
+                        <img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/背景.jpg" class="responsive-img" alt="AcWing 第787题. 归并排序">
                         
-                        <span class="card-title">C++ STL 各种容器</span>
+                        <span class="card-title">AcWing 第787题. 归并排序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            STL库中的各种容器和所属函数的简单学习笔记
+                            AcWing算法学习网站学习记录
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-14
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/C/" class="post-category">
-                                    C++
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            陈建浩
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
                     </a>
                     
-                    <a href="/tags/STL/">
-                        <span class="chip bg-color">STL</span>
+                    <a href="/tags/AcWing/">
+                        <span class="chip bg-color">AcWing</span>
                     </a>
                     
                 </div>
@@ -1291,23 +1129,23 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/25/bo-ke-shang-xian/">
+                <a href="/2020/04/13/acwing-786.di-k-ge-shu/">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/风景1.jpg" class="responsive-img" alt="博客上线">
+                        <img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/背景.jpg" class="responsive-img" alt="AcWing 第786题. 快速选择排序-第k个数">
                         
-                        <span class="card-title">博客上线</span>
+                        <span class="card-title">AcWing 第786题. 快速选择排序-第k个数</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            博客已上线，后面会将之前的学习笔记和后面的技术文章陆续上传到博客
+                            AcWing算法学习网站学习记录
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-13
                             </span>
                         <span class="publish-author">
                             
@@ -1320,8 +1158,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%9A%8F%E7%AC%94/">
-                        <span class="chip bg-color">随笔</span>
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                    <a href="/tags/AcWing/">
+                        <span class="chip bg-color">AcWing</span>
                     </a>
                     
                 </div>
