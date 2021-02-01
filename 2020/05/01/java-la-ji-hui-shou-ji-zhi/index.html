@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="数据结构-线性表以及实现方式, Zebre - 热情可抵岁月漫长">
-    <meta name="description" content="线性表的基本概念以及顺序链式实现代码">
+    <meta name="keywords" content="Java 垃圾回收机制, Zebre - 热情可抵岁月漫长">
+    <meta name="description" content="Java 垃圾回收机制学习笔记">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>数据结构-线性表以及实现方式 | Zebre - 热情可抵岁月漫长</title>
+    <title>Java 垃圾回收机制 | Zebre - 热情可抵岁月漫长</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -304,12 +304,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/img-ba40e8db67f132e43f5473e1bf736787.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/superMan_1920x1080.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">数据结构-线性表以及实现方式</h1>
+                    <h1 class="description center-align post-title">Java 垃圾回收机制</h1>
                 </div>
             </div>
         </div>
@@ -426,12 +426,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                                <span class="chip bg-color">数据结构</span>
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
                             </a>
                         
-                            <a href="/tags/C/">
-                                <span class="chip bg-color">C++</span>
+                            <a href="/tags/JVM/">
+                                <span class="chip bg-color">JVM</span>
                             </a>
                         
                     </div>
@@ -442,8 +442,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
-                                数据结构
+                            <a href="/categories/Java/" class="post-category">
+                                Java
                             </a>
                         
                     </div>
@@ -455,7 +455,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-19
+                    2020-05-01
                 </div>
                 
 
@@ -464,14 +464,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.6k
+                    4.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    16 分
                 </div>
                 
 
@@ -487,274 +487,116 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>线性表是最基本和最简单的一类数据结构，它表示的是线性结构。在线性结构中，数据元素之间存在着<strong>一对一</strong>的关系，其特点是数据元素之间按照某种规定存在一个顺序关系。</p>
-<h3 id="1-1线性表的定义"><a href="#1-1线性表的定义" class="headerlink" title="1.1线性表的定义"></a>1.1线性表的定义</h3><p>线性表：n个同类型数据元素的有限序列，记为：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/20200319230240.png" alt=""></p>
-<p>L为表名；<br>i为数据元素a_i在线性表中的位序；<br>n为线性表的表除；n=0时成为空表。<br>数据元素之间的关系时：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/20200319230553.png" alt=""></p>
-<p>除去第一元素a1外，都有唯一的前驱，除去最后元素an外，都有唯一的后继。</p>
-<hr>
-<h1 id="二-线性表的实现方式和基本操作"><a href="#二-线性表的实现方式和基本操作" class="headerlink" title="二 线性表的实现方式和基本操作"></a>二 线性表的实现方式和基本操作</h1><p>线性表是一种逻辑结构，在计算机上面表示可以使用顺序存储结构和链式存储结构来实现。</p>
-<p>顺序存储结构是把逻辑上相邻的元素存储在物理位置相邻的存储单元上面，而链式存储结构是在数据元素种添加一些地址域或者辅助结构，用来存放数据元素之间的关系。<br>顺序存储结构在计算机中可以使用数组来实现，链式存储结构可以用链表来实现。</p>
-<p>线性表的操作可以分为变动性操作和非变动性操作，而基于这2大类可以分为以下操作：</p>
-<p>变动性操作：</p>
+                <h1 id="Java-垃圾回收机制"><a href="#Java-垃圾回收机制" class="headerlink" title="Java 垃圾回收机制"></a>Java 垃圾回收机制</h1><p>[TOC]<br>![](<a href="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/Java" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/Java</a> 垃圾回收机制.png)</p>
+<h2 id="什么是垃圾"><a href="#什么是垃圾" class="headerlink" title="什么是垃圾"></a>什么是垃圾</h2><p>当对象失去引用（索引）并且不能被外界引用时就会变成垃圾。</p>
+<h3 id="垃圾分类"><a href="#垃圾分类" class="headerlink" title="垃圾分类"></a>垃圾分类</h3><p>垃圾的分类如下图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/20210201130904.png" alt=""></p>
+<ol>
+<li><p>强引用</p>
+<p>这类引用是最常见的引用，<strong>如果一个对象具有强引用，那么垃圾回收期绝对不会回收找个对象。</strong>当内存不足时，JVM宁愿抛出异常终止程序，也不会回收掉这个对象的内存来解决内存不足的问题。</p>
+</li>
+<li><p>软引用</p>
+<p>如果一个对象只具有软引用，是否被回收就要看内存空间是否足够；<strong>如果内存空间足够，垃圾回收器就不会回收这个对象；如果内存空间不够了，那么垃圾回收器就会回收这个对象；</strong></p>
+</li>
+<li><p>弱引用</p>
+<p>被定义是垃圾；弱引用与软引用的区别在于：只具有弱引用的对象拥有更短暂的生命周期。<strong>在垃圾回收器线程扫描它所管辖的内存区域的过程中，一旦发现了只具有弱引用的对象，不管当前内存空间足够与否，都会回收它的内存。</strong>不过，由于垃圾回收器是一个优先级很低的线程，因此不一定会很快发现那些只具有弱引用的对象。</p>
+</li>
+<li><p>虚引用</p>
+<p>与其他几种引用都不同，虚引用并不会决定对象的生命周期。<strong>如果一个对象仅持有虚引用，那么它就和没有任何引用一样【null】，在任何时候都可能被垃圾回收器回收。</strong></p>
+</li>
+</ol>
+<h3 id="如何定义一个对象是不是垃圾"><a href="#如何定义一个对象是不是垃圾" class="headerlink" title="如何定义一个对象是不是垃圾"></a>如何定义一个对象是不是垃圾</h3><p>没有索引不能够被重新使用的对象！系统无法重新复用这个对象了！那么这个对象就是个垃圾；那么如何定义一个对象是不是垃圾呢？</p>
+<p>这里有两种方法可以发现和确定失去索引的对象，是否是垃圾（引用计数法、可达性分析法）</p>
+<ol>
+<li><p>引用计数法</p>
+<p>　<strong>每个对象在创建的时候会在对象头分配一个空间来保存该对象被其他对象引用的次数。</strong>如果该对象被其他对象引用，引用计数器+1；如果删除对对象的引用，引用计数器-1；当该对象的计数器为0时，该对象被视为垃圾被回收。</p>
+<p>   　但是这样做也有一个问题出现-交织空引用。首先两个对象互相引用；之后，两个索引都置空；但是RC并不等于零，因为他们交织引用了对方。这就造成了本应该是垃圾的对象，无法被判定为垃圾，无法收回！！！</p>
+<p>这种现象被称为<strong>空索引-交织引用</strong>。</p>
+</li>
+<li><p>可达性分析法</p>
+<p>可达性分析算法（Reachability Analysis）的基本思路是，通过一些被称为垃圾回收根（GC Roots）的对象作为起点，从这些节点开始向下搜索，搜索走过的路径被称为引用链（Reference Chain)，当一个对象到 GC Roots 没有任何引用链相连时（即从 GC Roots 节点到该节点不可达），则证明该对象是不可用的。</p>
+</li>
+</ol>
+<h2 id="如何回收垃圾"><a href="#如何回收垃圾" class="headerlink" title="如何回收垃圾"></a>如何回收垃圾</h2><p>在确定了哪些垃圾可以被回收后，垃圾收集器要做的事情就是开始进行垃圾回收，但是这里面涉及到一个问题是：如何高效地进行垃圾回收。由于Java虚拟机规范并没有对如何实现垃圾收集器做出明确的规定，因此各个厂商的虚拟机可以采用不同的方式来实现垃圾收集器，这里我们讨论几种常见的垃圾收集算法的核心思想：①标记-清除法；②复制算法；③标记整理算法；④内存模型与回收策略</p>
+<p><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/20210201134612.png" alt=""></p>
+<h3 id="标记-清除法"><a href="#标记-清除法" class="headerlink" title="标记-清除法"></a>标记-清除法</h3><p>　　标记清除算法（Mark-Sweep）是最基础的一种垃圾回收算法，它分为2部分，先把内存区域中的这些对象进行标记，哪些属于可回收标记出来，然后把这些垃圾拎出来清理掉。就像上图一样，清理掉的垃圾就变成未使用的内存区域，等待被再次使用。</p>
+<p>　　这逻辑再清晰不过了，并且也很好操作，但它存在一个很大的问题，那就是内存碎片。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/20210201131758.png" alt=""></p>
+<p>　　上图中等方块的假设是 2M，小一些的是 1M，大一些的是 4M。等我们回收完，内存就会切成了很多段。我们知道开辟内存空间时，需要的是连续的内存区域，这时候我们需要一个 2M的内存区域，其中有2个 1M 是没法用的。这样就导致，其实我们本身还有这么多的内存的，但却用不了。</p>
+<p><strong>优点：简单快捷；缺点：造成太多内存碎片</strong></p>
+<h3 id="复制算法"><a href="#复制算法" class="headerlink" title="复制算法"></a>复制算法</h3><p>　复制算法（Copying）是在标记清除算法上演化而来，解决标记清除算法的内存碎片问题。它将可用内存按容量划分为大小相等的两块，每次只使用其中的一块。当这一块的内存用完了，就将还存活着的对象复制到另外一块上面，然后再把已使用过的内存空间一次清理掉。保证了内存的连续可用，内存分配时也就不用考虑内存碎片等复杂情况，逻辑清晰，运行高效。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/20210201131852.png" alt=""></p>
+<p>　　上面的图很清楚，也很明显的暴露了另一个问题，合着我这140平的大三房，只能当70平米的小两房来使？代价实在太高。</p>
+<p><strong>优点：解决了内存碎片太多的问题 ； 缺点：内存使用效率太低</strong></p>
+<h3 id="标记-整理算法"><a href="#标记-整理算法" class="headerlink" title="标记-整理算法"></a>标记-整理算法</h3><p>标记整理算法（Mark-Compact）标记过程仍然与标记 — 清除算法一样，但后续步骤不是直接对可回收对象进行清理，而是让所有存活的对象都向一端移动，再清理掉端边界以外的内存区域。</p>
+<p>　　标记整理算法一方面在标记-清除算法上做了升级，解决了内存碎片的问题，也规避了复制算法只能利用一半内存区域的弊端。看起来很美好，但从上图可以看到，它对内存变动更频繁，需要整理所有存活对象的引用地址，在效率上比复制算法要差很多。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/20210201132003.png" alt=""></p>
+<h2 id="内存模型和回收策略"><a href="#内存模型和回收策略" class="headerlink" title="内存模型和回收策略"></a>内存模型和回收策略</h2><p>Java 堆（Java Heap）是JVM所管理的内存中最大的一块，堆又是垃圾收集器管理的主要区域，这里我们主要分析一下 Java 堆的结构。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/20210201132059.png" alt=""></p>
+<p>　Java 堆主要分为2个区域-年轻代与老年代，其中年轻代又分 Eden 区和 Survivor 区，其中 Survivor 区又分 From 和 To 2个区。</p>
+<h3 id="Eden区"><a href="#Eden区" class="headerlink" title="Eden区"></a>Eden区</h3><p>对象会在新生代 Eden 区中进行分配，当 Eden 区没有足够空间进行分配时，虚拟机会发起一次 Minor GC【小型回收】，Minor GC 相比 Major GC【大型回收】 更频繁，回收速度也更快。</p>
+<p>通过 Minor GC 之后，Eden 会被清空，Eden 区中绝大部分对象会被回收，而那些无需回收的存活对象，将会进到 Survivor 的 From 区（若 From 区不够，则直接进入 Old 区）。</p>
+<h3 id="Survivor区"><a href="#Survivor区" class="headerlink" title="Survivor区"></a>Survivor区</h3><p>Survivor 区相当于是 Eden 区和 Old 区的一个缓冲，类似于我们交通灯中的黄灯。Survivor 又分为2个区，一个是 From 区，一个是 To 区。<strong>每次执行 Minor GC，会将 Eden 区和 From 存活的对象放到 Survivor 的 To 区（如果 To 区不够，则直接进入 Old 区）。</strong></p>
+<p>　　1、为啥需要？</p>
+<p>　　不就是新生代到老年代么，直接 Eden 到 Old 不好了吗，为啥要这么复杂。想想如果没有 Survivor 区，Eden 区每进行一次 Minor GC，存活的对象就会被送到老年代，老年代很快就会被填满。而有很多对象虽然一次 Minor GC 没有消灭，但其实也并不会蹦跶多久，或许第二次，第三次就需要被清除。这时候移入老年区，很明显不是一个明智的决定。</p>
+<p>　　所以，Survivor 的存在意义就是减少被送到老年代的对象，进而减少 Major GC 的发生。Survivor 的预筛选保证，只有经历16次 Minor GC 还能在新生代中存活的对象，才会被送到老年代。</p>
+<p>　　2、为啥需要俩？</p>
+<p>　　设置两个 Survivor 区最大的好处就是解决内存碎片化。</p>
+<p>　　我们先假设一下，Survivor 如果只有一个区域会怎样。Minor GC 执行后，Eden 区被清空了，存活的对象放到了 Survivor 区，而之前 Survivor 区中的对象，可能也有一些是需要被清除的。问题来了，这时候我们怎么清除它们？在这种场景下，我们只能标记清除，而我们知道标记清除最大的问题就是内存碎片，在新生代这种经常会消亡的区域，采用标记清除必然会让内存产生严重的碎片化。因为 Survivor 有2个区域，所以每次 Minor GC，会将之前 Eden 区和 From 区中的存活对象复制到 To 区域。第二次 Minor GC 时，From 与 To 职责兑换，这时候会将 Eden 区和 To 区中的存活对象再复制到 From 区域，以此反复。</p>
+<p>　　这种机制最大的好处就是，整个过程中，永远有一个 Survivor space 是空的，另一个非空的 Survivor space 是无碎片的。那么，Survivor 为什么不分更多块呢？比方说分成三个、四个、五个?显然，如果 Survivor 区再细分下去，每一块的空间就会比较小，容易导致 Survivor 区满，两块 Survivor 区可能是经过权衡之后的最佳方案。</p>
+<h3 id="Old区"><a href="#Old区" class="headerlink" title="Old区"></a>Old区</h3><p>　老年代占据着2/3的堆内存空间，只有在 Major GC 的时候才会进行清理，每次 GC 都会触发“Stop-The-World”。内存越大，STW 的时间也越长，所以内存也不仅仅是越大就越好。由于复制算法在对象存活率较高的老年代会进行很多次的复制操作，效率很低，所以老年代这里采用的是标记 — 整理算法。</p>
+<p>　　除了上述所说，在内存担保机制下，无法安置的对象会直接进到老年代，以下几种情况也会进入老年代。</p>
+<p>　　1、大对象</p>
+<p>　　　　大对象指需要大量连续内存空间的对象，这部分对象不管是不是“朝生夕死”，都会直接进到老年代。这样做主要是为了避免在 Eden 区及2个 Survivor 区之间发生大量的内存复制。当你的系统有非常多“朝生夕死”的大对象时，得注意了。</p>
+<p>　　2、长期存活对象</p>
+<p>　　　　虚拟机给每个对象定义了一个对象年龄（Age）计数器。正常情况下对象会不断的在 Survivor 的 From 区与 To 区之间移动，对象在 Survivor 区中每经历一次 Minor GC，年龄就增加1岁。当年龄增加到15岁时，这时候就会被转移到老年代。当然，这里的15，JVM 也支持进行特殊设置。</p>
+<p>　　3、动态对象年龄</p>
+<p>　　　　虚拟机并不重视要求对象年龄必须到15岁，才会放入老年区，如果 Survivor 空间中相同年龄所有对象大小的综合大于 Survivor 空间的一般，年龄大于等于该年龄的对象就可以直接进去老年区，无需等你“成年”。</p>
+<h3 id="GC时为什么会有全局停顿？"><a href="#GC时为什么会有全局停顿？" class="headerlink" title="GC时为什么会有全局停顿？"></a>GC时为什么会有全局停顿？</h3><p>　　类比在聚会时打扫房间，聚会时很乱，又有新的垃圾产生，房间永远打扫不干净，只有让大家停止活动了，才能将房间打扫干净。当gc线程在处理垃圾的时候，其它java线程要停止才能彻底清除干净，否则会影响gc线程的处理效率增加gc线程负担，特别是在垃圾标记的时候。</p>
+<h2 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h2><p>JVM中的垃圾收集器主要包括7种，即<strong>Serial，Serial Old，ParNew，Parallel Scavenge，Parallel Old以及CMS，G1收集器</strong>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/20210201134528.png" alt=""></p>
+<h3 id="Serial收集器"><a href="#Serial收集器" class="headerlink" title="Serial收集器"></a>Serial收集器</h3><p>Serial收集器是<strong>一个单线程的垃圾收集器</strong>，并且在执行垃圾回收的时候需要 <strong>Stop The World</strong>。虚拟机运行在<strong>Client模式</strong>下的默认新生代收集器。Serial收集器的优点是简单高效，对于限定在单个CPU环境来说，Serial收集器没有多线程交互的开销。</p>
+<h3 id="Serial-Old收集器"><a href="#Serial-Old收集器" class="headerlink" title="Serial Old收集器"></a>Serial Old收集器</h3><p>Serial Old是Serial收集器的老年代版本，也是<strong>一个单线程收集器</strong>。主要也是给在Client模式下的虚拟机使用。在Server模式下存在主要是做为CMS垃圾收集器的后备预案，<strong>当CMS并发收集发生Concurrent Mode Failure时使用。</strong></p>
+<h3 id="ParNew收集器"><a href="#ParNew收集器" class="headerlink" title="ParNew收集器"></a>ParNew收集器</h3><p>ParNew是Serial收集器的<strong>多线程</strong>版本，新生代是并行的（多线程的），老年代是串行的（单线程的），新生代采用复制算法，老年代采用标记整理算法。可以使用参数：<strong>-XX：UseParNewGC使用该收集器，使用 -XX：ParallelGCThreads可以限制线程数量。</strong></p>
+<h3 id="Parallel-Scavenge垃圾收集器"><a href="#Parallel-Scavenge垃圾收集器" class="headerlink" title="Parallel Scavenge垃圾收集器"></a>Parallel Scavenge垃圾收集器</h3><p>Parallel Scavenge是一种新生代收集器，使用复制算法的收集器，而且是<strong>并行的多线程收集器。</strong>Paralle收集器特点是更加关注吞吐量（吞吐量就是cpu用于运行用户代码的时间与cpu总消耗时间的比值）。可以通过<strong>-XX:MaxGCPauseMillis参数控制最大垃圾收集停顿时间；通过-XX:GCTimeRatio参数直接设置吞吐量大小；通过-XX:+UseAdaptiveSizePolicy参数可以打开GC自适应调节策略，</strong>该参数打开之后虚拟机会根据系统的运行情况收集性能监控信息，动态调整虚拟机参数以提供最合适的停顿时间或者最大的吞吐量。<strong>自适应调节策略</strong>是Parallel Scavenge收集器和ParNew的主要区别之一。</p>
+<h3 id="Parallel-Old收集器"><a href="#Parallel-Old收集器" class="headerlink" title="Parallel Old收集器"></a>Parallel Old收集器</h3><p>Parallel Old是Parallel Scavenge收集器的老年代版本，使用多线程和标记-整理算法。</p>
+<h3 id="CMS（Concurrent-Mark-Sweep）收集器（并发标记清除）"><a href="#CMS（Concurrent-Mark-Sweep）收集器（并发标记清除）" class="headerlink" title="CMS（Concurrent Mark Sweep）收集器（并发标记清除）"></a>CMS（Concurrent Mark Sweep）收集器（并发标记清除）</h3><p>CMS收集器是<strong>一种以获取最短回收停顿时间为目标</strong>的收集器。CMS收集器是基于<strong>标记-清除算法</strong>实现的，是一种老年代收集器，通常与<strong>ParNew</strong>一起使用。</p>
+<p><strong>CMS的垃圾收集过程分为4步：</strong></p>
 <ul>
-<li>创建线性表（创建空表，创建带有元素的表）</li>
-<li>插入元素（根据位置插入，在尾部插入）</li>
-<li>修改元素值</li>
-<li>删除元素值（根据位置删除，根据元素值删除）</li>
+<li><p><strong>初始标记</strong>：需要“Stop the World”，初始标记仅仅只是标记一下GC Root能直接关联到的对象，速度很快。</p>
+</li>
+<li><p><strong>并发标记</strong>：是主要标记过程，这个标记过程是和用户线程并发执行的。</p>
+</li>
+<li><p><strong>重新标记</strong>：需要“Stop the World”，为了修正并发标记期间因用户程序继续运作而导致标记产生变动的那一部分对象的标记记录（停顿时间比初始标记长，但比并发标记短得多）。</p>
+</li>
+<li><p><strong>并发清除</strong>：和用户线程并发执行的，基于标记结果来清理对象。</p>
+<h4 id="CMS垃圾回收器的优缺点分析："><a href="#CMS垃圾回收器的优缺点分析：" class="headerlink" title="CMS垃圾回收器的优缺点分析："></a><strong>CMS垃圾回收器的优缺点分析：</strong></h4><p>CMS以降低垃圾回收的停顿时间为目的，很显然其具有并发收集，停顿时间低的优点。</p>
+<h4 id="缺点主要包括如下："><a href="#缺点主要包括如下：" class="headerlink" title="缺点主要包括如下："></a><strong>缺点主要包括如下：</strong></h4><ul>
+<li><strong>对CPU资源非常敏感</strong>，因为并发标记和并发清理阶段和用户线程一起运行，当CPU数变小时，性能容易出现问题。</li>
+<li>收集过程中会产生<strong>浮动垃圾</strong>，所以不可以在老年代内存不够用了才进行垃圾回收，必须提前进行垃圾收集。通过参数<strong>-XX:CMSInitiatingOccupancyFraction</strong>的值来控制内存使用百分比。如果该值设置的太高，那么在CMS运行期间预留的内存可能无法满足程序所需，会出现<strong>Concurrent Mode Failure失败，之后会临时使用Serial Old收集器做为老年代收集器</strong>，会产生更长时间的停顿。</li>
+<li><strong>标记-清除方式会产生内存碎片</strong>，可以使用参数<strong>-XX：UseCMSCompactAtFullCollection</strong>来控制是否开启内</li>
 </ul>
-<p>非变动性操作：</p>
+</li>
+</ul>
+<h3 id="G1（Garbage-First）收集器"><a href="#G1（Garbage-First）收集器" class="headerlink" title="G1（Garbage-First）收集器"></a>G1（Garbage-First）收集器</h3><p>G1收集器将新生代和老年代取消了，取而代之的是<strong>将堆划分为若干的区域</strong>，每个区域都可以根据需要扮演新生代的Eden和Survivor区或者老年代空间，仍然属于分代收集器，区域的一部分包含新生代，新生代采用复制算法，老年代采用标记-整理算法。</p>
+<p>通过<strong>将JVM堆分为一个个的区域（region）</strong>,G1收集器可以避免在Java堆中进行全区域的垃圾收集。G1跟踪各个region里面的垃圾堆积的价值大小（回收所获得的空间大小以及回收所需时间的经验值），在后台维护一个优先列表，每次<strong>根据回收时间来优先回收价值最大的region。</strong></p>
+<p><strong>G1收集器的特点：</strong></p>
 <ul>
-<li>获取线性表长度（顺序存储方式需要获取表最大容量）</li>
-<li>遍历线性表</li>
-<li>查找元素（根据位置查，根据元素值查）</li>
+<li><strong>并行与并发</strong>：G1能充分利用多CPU，多核环境下的硬件优势，来缩短Stop the World，是并发的收集器。</li>
+<li><strong>分代收集</strong>：G1不需要其他收集器就能独立管理整个GC堆，能够采用不同的方式去处理新建对象、存活一段时间的对象和熬过多次GC的对象。</li>
+<li><strong>空间整合</strong>：G1从整体来看是基于标记-整理算法，从局部（两个Region）上看基于复制算法实现，G1运作期间不会产生内存空间碎片。</li>
+<li><strong>可预测的停顿</strong>：能够建立可以预测的停顿时间模型，预测停顿时间。</li>
 </ul>
-<p>这只是基本操作，有其他对元素的操作根据自己需求撰写算法。</p>
-<hr>
-<h1 id="三、-线性表顺序存储实现"><a href="#三、-线性表顺序存储实现" class="headerlink" title="三、 线性表顺序存储实现"></a>三、 线性表顺序存储实现</h1><p>在写一些插入函数的时候，需要返回一个状态来表示成功与否，这里写一个枚举类型来表示状态</p>
-<pre class=" language-c++"><code class="language-c++">enum Status { SUCCESS, FAIL, RANGE_ERROR, OVER_FLOW, EMPTY };</code></pre>
-<p>顺序存储实现需要数组实现，数据成员要有一个数组且要2个成员表示该线性表的长度和该表的最大容量。</p>
-<h2 id="3-1-类体结构："><a href="#3-1-类体结构：" class="headerlink" title="3.1 类体结构："></a>3.1 类体结构：</h2><pre><code>template&lt;class DataType&gt;
-class SeqList(){
-private:
-    DataType *data;    //数组
-    int length;        //该线性表的长度
-    int maxLength;    //该线性表的最大长度 
-public:
-    SeqList(int size);
-    ~SeqList();
-    int GetLength()const;
-    int GetMaxLength()const;
-    void display()const;
-    Status Insert(DataType&amp; elem);
-    Status Insert(int i , DataType&amp; elem);
-    Status Delete(int i);
-    Status Delete(DataType &amp;elem);
-    Status DeleteEqualValue(DataType &amp;elem);
-    Status GetData(int i , DataType &amp;elem)const;
-};</code></pre><p>类内所有函数的实现：</p>
-<h2 id="3-2-构造函数"><a href="#3-2-构造函数" class="headerlink" title="3.2 构造函数"></a>3.2 构造函数</h2><pre><code>template&lt;class DataType&gt;
-SeqList&lt;DataType&gt;::SeqList(int size){
-    DataType *data = new DataType[size];
-    length = 0;
-    maxLength = size;
-    //构造函数，对数据成员赋值，data处根据new字符动态创建一个size大小的数组
-}</code></pre><h2 id="3-3-析构函数"><a href="#3-3-析构函数" class="headerlink" title="3.3 析构函数"></a>3.3 析构函数</h2><pre><code>template&lt;class DataType&gt;
-SeqList&lt;DataType&gt;::~SeqList(){
-    delete []data;
-    //析构函数，对使用new运算符构造出来的要手动delete删除
-}</code></pre><h2 id="3-4-非变动性函数"><a href="#3-4-非变动性函数" class="headerlink" title="3.4 非变动性函数"></a>3.4 非变动性函数</h2><h3 id="3-4-1-获取线性表当前元素个数"><a href="#3-4-1-获取线性表当前元素个数" class="headerlink" title="3.4.1 获取线性表当前元素个数"></a>3.4.1 获取线性表当前元素个数</h3><pre><code>//获取线性表当前元素个数
-template&lt;class DataType&gt;
-int SeqList&lt;DataType&gt;::GetLength()const{
-    return length;
-}</code></pre><h3 id="3-4-2-获取线性表的最大容量"><a href="#3-4-2-获取线性表的最大容量" class="headerlink" title="3.4.2 获取线性表的最大容量"></a>3.4.2 获取线性表的最大容量</h3><pre><code>//获取线性表的最大容量
-template&lt;class DataType&gt;
-int SeqList&lt;DataType&gt;::GetMaxLength()const{
-    return maxLength;
-}</code></pre><h3 id="3-4-3-获取第-i-位置的元素并返回到elem中"><a href="#3-4-3-获取第-i-位置的元素并返回到elem中" class="headerlink" title="3.4.3 获取第 i 位置的元素并返回到elem中"></a>3.4.3 获取第 i 位置的元素并返回到elem中</h3><pre><code>//获取第i位置的元素，返回到elem中
-emplate&lt;class DataType&gt;
-Status SeqList&lt;DataType&gt;::GetData(int i,DataType &amp;elem)const{
-    //判断i是否合法
-    if(i&lt;1 || i&lt;length)
-        return RANGE_ERROR;
-    else
-        elem = data[i-1];
-    return SUCCESS;
-
-    // 三元表达式 i&lt;1 || i&lt;length? RANGE_ERROR:SUCCESS;
-}</code></pre><h2 id="3-5-插入函数"><a href="#3-5-插入函数" class="headerlink" title="3.5 插入函数"></a>3.5 插入函数</h2><h3 id="3-5-1-插入elem元素到线性表尾部"><a href="#3-5-1-插入elem元素到线性表尾部" class="headerlink" title="3.5.1 插入elem元素到线性表尾部"></a>3.5.1 插入elem元素到线性表尾部</h3><pre><code>//插入elem元素到线性表尾部
-template&lt;class DataType&gt;
-Status SeqList&lt;DataType&gt;::Insert(DataType &amp;elem){
-    //先判断线性表是不是满了，没满的话再进行下一步操作
-    if(length==maxLength)
-        return FAIL;
-    else{
-        //因为数组内排序是从0开始的，所以数组下标和长度是差1的
-        //假设数组长度5，那数组下标则是0，1，2，3，4 
-        //那么在第5个位置也就是length位置插入即可
-        data[length]=elem;
-        length++;
-        return SUCCESS;
-    }
-}</code></pre><h3 id="3-5-2-插入elem元素到i位置"><a href="#3-5-2-插入elem元素到i位置" class="headerlink" title="3.5.2 插入elem元素到i位置"></a>3.5.2 插入elem元素到i位置</h3><pre><code>//插入elem元素到i位置
-template&lt;class DataType&gt;
-Status SeqList&lt;DataType&gt;::Insert(int i , DataType &amp;elem){
-    //先判断i位置是否合法，再判断表是否满了，以上条件都不满足则可以插入
-    //满足 1&lt;=i&lt;=length
-    if(1&lt;=i || i&lt;length)
-        return RANGE_ERROR;//越界错误
-    else if(length == maxLength)
-        return FAIL;
-    else{
-        //插入元素，元素i位置以后的元素都往后挪
-        //元素是从最后一个开始往后挪
-        //删除和插入都是使用 j 和j-1这样的方式来表达元素前后关系，因为数组是从0开始的，循环次数都是要-1
-        for(int j=length; j&gt;=i;j--)
-            data[j]=data[j-1];
-        data[i-1]=elem;
-        length++;
-        return SUCCESS;
-    }
-}</code></pre><h2 id="3-6-删除函数"><a href="#3-6-删除函数" class="headerlink" title="3.6 删除函数"></a>3.6 删除函数</h2><h3 id="3-6-1-删除-i-位置的元素"><a href="#3-6-1-删除-i-位置的元素" class="headerlink" title="3.6.1 删除 i 位置的元素"></a>3.6.1 删除 i 位置的元素</h3><pre><code>//删除位置i的元素
-template&lt;class DataType&gt;
-Status SeqList&lt;DataType&gt;::Delete(int i){
-    //判断i位置是否合法
-    if( i&lt;1 || i&lt;length)
-        return RANGE_ERROR;
-    else{
-        //删除元素是i位置以后的元素往前挪
-        for(int j = i; j&lt;=length;j++)
-            data[j-1]=data[j];
-        length--;
-        return SUCCCESS;
-    }
-}
-</code></pre><h3 id="3-6-2-删除表内所有-elem的元素"><a href="#3-6-2-删除表内所有-elem的元素" class="headerlink" title="3.6.2 删除表内所有==elem的元素"></a>3.6.2 删除表内所有==elem的元素</h3><pre><code>//删除表内所有==elem的元素
-emplate&lt;class DataType&gt;
-Status SeqList&lt;DataType&gt;::DeleteEqualValue(DataType &amp;elem){
-    //遍历整个数组,判断里面的元素是否==elem，判断就删除
-    for(int i=0;i&lt;length;i++){
-        //判断元素是否==elem
-        if(data[i]==elem){
-            for(int j = i;j&lt;length;j++)
-                data[j]=data[j+1];
-            length--;
-        }
-    }
-    return SUCCESS;
-}</code></pre><h1 id="四、-线性表链式存储实现"><a href="#四、-线性表链式存储实现" class="headerlink" title="四、 线性表链式存储实现"></a>四、 线性表链式存储实现</h1><p>链式存储要链表实现，首先先定义结点类型：</p>
-<h2 id="4-1-链表内结点类型"><a href="#4-1-链表内结点类型" class="headerlink" title="4.1 链表内结点类型"></a>4.1 链表内结点类型</h2><pre class=" language-c++"><code class="language-c++">template<class DataType>
-struct Node{
-public:
-    DataType *data;     //数据域
-    Node<DataType> *next//指针域
-    Node(){
-        data=0;
-        next=NULL;
-    }//结点的构造函数
-}</code></pre>
-<h2 id="4-2-链表类体结构"><a href="#4-2-链表类体结构" class="headerlink" title="4.2 链表类体结构"></a>4.2 链表类体结构</h2><p>线性表类需要实现头节点和表长度，所以类体成员要有结点成员和int成员</p>
-<pre><code>template&lt;class DataType&gt;
-class LinkList(){
-private:
-    Node&lt;DataType&gt; *head;        //头节点
-    int length;                   //表长
-public:
-    LinkList();
-    ~LinkList();
-    void display();        //遍历链表
-    int GetLength();    //获取该线性表的长度
-    int LocateData(const DataType&amp; data)const;        //定位元素位置
-    Status GetData(int i, DataType&amp; data)const;        //定位i位置，而后将i位置的元素返回给data
-    Status InsertElemAtIndex(int i, const DataType&amp; data);    //插入data元素到i位置
-    Status Insert(const DataType&amp; data);                    //将data元素插入到尾部
-    Status DeleteElemAtIndex(int i, DataType&amp; data);        //删除数据域为data的结点
-}</code></pre><h2 id="4-2-构造函数"><a href="#4-2-构造函数" class="headerlink" title="4.2 构造函数"></a>4.2 构造函数</h2><pre><code>//构造函数
-template&lt;class DataType&gt;
-LinkList&lt;DataType&gt;::LinkList(){
-    head = new Node&lt;DataType&gt;;
-    head-&gt;data=0;
-    head-&gt;next=NULL;
-    length=0;
-}</code></pre><h2 id="4-3-析构函数"><a href="#4-3-析构函数" class="headerlink" title="4.3 析构函数"></a>4.3 析构函数</h2><pre><code>//析构函数
-template&lt;class DataType&gt;
-LinkList&lt;DataType&gt;::~LinkList(){
-    delete head;
-}</code></pre><h2 id="4-4-非变动性函数"><a href="#4-4-非变动性函数" class="headerlink" title="4.4 非变动性函数"></a>4.4 非变动性函数</h2><h3 id="4-4-1-遍历链表"><a href="#4-4-1-遍历链表" class="headerlink" title="4.4.1 遍历链表"></a>4.4.1 遍历链表</h3><pre><code>//遍历链表
-template&lt;class DataType&gt;
-void LinkList&lt;DataType&gt;::display(){
-    Node&lt;DataType&gt; *p = head-&gt;next;
-    while(p!=NULL){
-        cout &lt;&lt; p-&gt;data &lt;&lt; " ";
-        p=p-&gt;next;
-    }
-}</code></pre><h3 id="4-4-2-获取该线性表的长度"><a href="#4-4-2-获取该线性表的长度" class="headerlink" title="4.4.2 获取该线性表的长度"></a>4.4.2 获取该线性表的长度</h3><pre><code>//获取该线性表的长度
-template&lt;class DataType&gt;
-int LinkList&lt;DataType&gt;::GetLength(){
-    return length;
-}
-</code></pre><h3 id="4-4-3-定位元素位置"><a href="#4-4-3-定位元素位置" class="headerlink" title="4.4.3 定位元素位置"></a>4.4.3 定位元素位置</h3><pre><code>//定位元素位置
-template&lt;class DataType&gt;
-int LinkList&lt;DataType&gt;::LocateData(const DataType &amp;data)const{
-    int count =1;
-    Node&lt;DataType&gt; *p = head-&gt;next;
-    while(p!=NULL){
-        if(p-&gt;data==data)
-            return count;
-        count++;
-        p=p-&gt;next;
-    }
-    if(p==NULL)
-        return 0; //找不到该元素
-}
-</code></pre><h3 id="4-4-4-定位-i-位置并将i位置的元素返回给data"><a href="#4-4-4-定位-i-位置并将i位置的元素返回给data" class="headerlink" title="4.4.4 定位 i 位置并将i位置的元素返回给data"></a>4.4.4 定位 i 位置并将i位置的元素返回给data</h3><pre><code>//定位i位置，然后将i位置的元素返回给data
-template&lt;class DataType&gt;
-Status LinkList&lt;DataType&gt;::GetData(int i , DataType &amp;data)const{
-    //判断i位置是否合法
-    if( i&lt;1 || i&lt;length)
-        return RANGE_ERROR;
-    else{
-            Node&lt;DataType&gt; *p = head-&gt;next;
-        for(int couunt = 1;count&lt;i;i++)
-            p=p-&gt;next;
-        data=p-&gt;data;
-        return SUCCESS;
-        }
-}
-</code></pre><h2 id="4-5-插入函数"><a href="#4-5-插入函数" class="headerlink" title="4.5 插入函数"></a>4.5 插入函数</h2><h3 id="4-5-1-插入-data-元素到-i-位置"><a href="#4-5-1-插入-data-元素到-i-位置" class="headerlink" title="4.5.1 插入 data 元素到 i 位置"></a>4.5.1 插入 data 元素到 i 位置</h3><pre><code>//插入data元素到i位置
-template&lt;class DataType&gt;
-Status LinkList&lt;DataType&gt;::InsertElemAtIndex(int i , const DataType &amp;data){
-    //判断i位置的合法性
-    if( i&lt;1 || i&lt;=length)
-        return RANGE_ERROR;
-    else{
-        //定位到i-1的位置，然后修改i-1的元素后继为i+1
-        //然后释放i位置的结点
-        Node&lt;DataType&gt; *p =head-&gt;next;
-        for(int j = 1; j &lt; i-1 ; j++)
-            p=p-&gt;next;
-        //构造新结点
-        Node&lt;DataType&gt; *x= new Node&lt;DataType&gt;
-        x-&gt;data = data;//数据域等于传进来的data
-        x-&gt;next=p-&gt;next;//新节点的next== i-1元素的next
-        p-&gt;next = x;    // i-1元素的next 变成新节点
-        length++;
-        return SUCCESS;
-    }
-}
-</code></pre><h3 id="4-5-2-插入data元素到尾部"><a href="#4-5-2-插入data元素到尾部" class="headerlink" title="4.5.2 插入data元素到尾部"></a>4.5.2 插入data元素到尾部</h3><pre><code>//将data元素插入到尾部
-template&lt;class DataType&gt;
-Status LinkList&lt;DataType&gt;::Insert(const DataType &amp;data){
-    Node&lt;DataType&gt; *p = head;    //考虑到这个时候是空表，如果==head-&gt;next的话就出错了
-    Node&lt;DataType&gt; *x = new Node&lt;DataType&gt;;
-    x-&gt;data = data;
-    x-&gt;next = NULL;
-    //因为p指针是指向head的而不是head-&gt;next，所以循环变量从0开始
-    //如果是空表的话，length==0，循环条件不成立也不会执行循环体语句还是指向head本身
-    //如果不是空表，那么条件成立就会一直往下走
-    for(int count = 0; cout &lt; this-&gt; length ; count++)
-        p=p-&gt;next;
-    p-&gt;next = x;
-    length++
-    return SUCCESS;
-}</code></pre><h2 id="4-6-删除函数"><a href="#4-6-删除函数" class="headerlink" title="4.6 删除函数"></a>4.6 删除函数</h2><h3 id="4-6-1-删除-i-位置的结点并将元素值返回到-data"><a href="#4-6-1-删除-i-位置的结点并将元素值返回到-data" class="headerlink" title="4.6.1 删除 i 位置的结点并将元素值返回到 data"></a>4.6.1 删除 i 位置的结点并将元素值返回到 data</h3><pre><code>//删除i位置的结点，并将元素值返回到data
-template&lt;class DataType&gt;
-Status LinkList&lt;DataType&gt;::DeleteElemAtIndex(int i,DataType &amp;data){
-   //判断i位置是否合法 1&lt;=i&lt;=length
-    if (i &lt; 1 || i &gt;length)
-        return RANGE_ERROR;
-    else {
-        Node&lt;DataType&gt;* p = head-&gt;next;
-        for (int count = 1;count &lt; i - 1;count++)
-            p = p-&gt;next;
-        Node&lt;DataType&gt;* q = p-&gt;next;  //指向i位置的结点
-        p-&gt;next = p-&gt;next-&gt;next;    //i-1位置的next指针指向 i+1结点
-        data = q-&gt;data;        //赋值给data带出去
-        delete q;
-        length--;
-        return SUCCESS;
-}</code></pre><p>后续会有双向链表和循环链表的代码！</p>
+<p><strong>和CMS收集器类似，G1收集器的垃圾回收工作也分为了四个阶段：</strong></p>
+<ul>
+<li>初始标记</li>
+<li>并发标记</li>
+<li>最终标记</li>
+<li>筛选回收</li>
+</ul>
+<p>其中，筛选回收阶段首先对各个Region的回收价值和成本进行计算，根据用户期望的GC停顿时间来制定回收计划。</p>
+<h3 id="Java版本常用收集器"><a href="#Java版本常用收集器" class="headerlink" title="Java版本常用收集器"></a>Java版本常用收集器</h3><p>jdk1.8默认的新生代垃圾收集器：Parallel Scavenge，老年代：Parallel Old</p>
+<p>jdk1.9 默认垃圾收集器G1</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -798,7 +640,7 @@ Status LinkList&lt;DataType&gt;::DeleteElemAtIndex(int i,DataType &amp;data){
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://jianhao66.gitee.io/2020/03/19/xian-xing-biao/">http://jianhao66.gitee.io/2020/03/19/xian-xing-biao/</a>
+                    <a href="http://jianhao66.gitee.io/2020/05/01/java-la-ji-hui-shou-ji-zhi/">http://jianhao66.gitee.io/2020/05/01/java-la-ji-hui-shou-ji-zhi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -836,12 +678,12 @@ Status LinkList&lt;DataType&gt;::DeleteElemAtIndex(int i,DataType &amp;data){
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                                    <span class="chip bg-color">数据结构</span>
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
-                                <a href="/tags/C/">
-                                    <span class="chip bg-color">C++</span>
+                                <a href="/tags/JVM/">
+                                    <span class="chip bg-color">JVM</span>
                                 </a>
                             
                         </div>
@@ -1270,45 +1112,51 @@ Status LinkList&lt;DataType&gt;::DeleteElemAtIndex(int i,DataType &amp;data){
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/04/04/zhan-he-dui-lie/">
+                <a href="/2020/05/01/java-la-ji-hui-shou-ji-zhi/">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/img-01fd4eebaf4ca4830542ff7982b4161b.jpg" class="responsive-img" alt="数据结构-栈和队列">
+                        <img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/superMan_1920x1080.png" class="responsive-img" alt="Java 垃圾回收机制">
                         
-                        <span class="card-title">数据结构-栈和队列</span>
+                        <span class="card-title">Java 垃圾回收机制</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            栈和队列的基本概念以及代码实现
+                            Java 垃圾回收机制学习笔记
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-04
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
-                                    数据结构
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/JVM/">
+                        <span class="chip bg-color">JVM</span>
                     </a>
                     
                 </div>
@@ -1322,30 +1170,30 @@ Status LinkList&lt;DataType&gt;::DeleteElemAtIndex(int i,DataType &amp;data){
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/17/mian-xiang-dui-xiang-she-ji-yuan-ze/">
+                <a href="/2020/04/25/spring/">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/img-91c6a55525b25b0bc9ed2b3dee91024f.jpg" class="responsive-img" alt="面向对象设计原则及模板方法模式">
+                        <img src="https://cdn.jsdelivr.net/gh/chenjianhao66/Myblog_picture-server/images/img-69fb39d3d29add804224c0868e08f6d3.jpg" class="responsive-img" alt="Spring框架学习笔记">
                         
-                        <span class="card-title">面向对象设计原则及模板方法模式</span>
+                        <span class="card-title">Spring框架学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            面向对象设计原则和模板方法设计模式
+                            Spring的学习笔记
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-25
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
-                                    设计模式
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
                                 </a>
                             
                             
@@ -1355,12 +1203,12 @@ Status LinkList&lt;DataType&gt;::DeleteElemAtIndex(int i,DataType &amp;data){
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
-                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                        <span class="chip bg-color">设计模式</span>
+                    <a href="/tags/Spring/">
+                        <span class="chip bg-color">Spring</span>
                     </a>
                     
                 </div>
